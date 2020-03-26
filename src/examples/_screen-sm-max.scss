@@ -1,0 +1,13 @@
+/*
+ Details Summary Styling (small view and under)
+*/
+.dshbrd {
+	details {
+		summary {
+			background: $color-primary;
+		}
+		.cntnt {
+			border: 1px solid $color-primary;
+		}
+	}
+}

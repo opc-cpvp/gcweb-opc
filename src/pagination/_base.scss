@@ -1,0 +1,26 @@
+/*
+ * Pagination
+ */
+.pagination {
+	> .active {
+		> a {
+			background-color: $color-primary;
+		}
+	}
+
+	> li {
+		> a {
+			color: $color-primary;
+
+		}
+	}
+}
+
+// Data tables
+.dataTables_wrapper {
+	.dataTables_paginate {
+		.paginate_button {
+			color: $color-primary;
+		}
+	}
+}

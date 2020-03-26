@@ -1,0 +1,106 @@
+/*
+ * Carousel-specific overrides
+ */
+
+
+.wb-tabs {
+	&.carousel-s1, &.carousel-s2 {
+		figure {
+			background: $color-highlight;
+		}
+	}
+
+	&.carousel-s2 {
+		[role="tablist"] {
+			li {
+				&.control {
+					vertical-align: baseline;
+				}
+
+				&.tab-count {
+					.curr-count {
+						@extend %carousel-nav-font-size;
+					}
+				}
+
+
+
+				&.nxt,
+				&.prv,
+				&.plypause {
+					a {
+						background: transparent;
+						border-radius: 0;
+						box-shadow: none;
+						color: $color-primary;
+						font-size: 1.7em !important;
+						margin: 0;
+						padding: 0;
+						margin-bottom: 0.6em;
+
+						&:hover, &:focus, &:active {
+							color: darken($color-primary, 10%);
+						}
+
+						span {
+						}
+
+						.glyphicon {
+							font-size: 1em;
+							background: transparent;
+							border-radius: 0;
+							box-shadow: none;
+							line-height: 1em;
+							height: auto;
+
+							&:before {
+								font-family: "FontAwesome"
+							}
+						}
+					}
+				}
+
+				&.plypause {
+					padding-top: 0.35em;
+
+					a {
+						@extend %carousel-nav-font-size;
+
+						.glyphicon-play {
+							&:before {
+								content: "\f144";
+							}
+						}
+						.glyphicon-pause {
+							&:before {
+								content: "\f04c";
+							}
+						}
+					}
+				}
+
+				&.prv {
+					a {
+						padding-left: $padding-base-horizontal;
+						.glyphicon {
+							&:before {
+								content: "\f0a8";
+
+							}
+						}
+					}
+				}
+				&.nxt {
+					a {
+						.glyphicon {
+							&:before {
+								content: "\f0a9";
+
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

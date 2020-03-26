@@ -1,0 +1,146 @@
+.need-our-help {
+
+}
+
+.whats-new {
+	ul {
+		li {
+			margin-top: $padding-large-vertical * 2;
+
+			h1, h2, h3, h4, h5, h6 {
+				margin-top: 0.5em;
+			}
+		}
+	}
+}
+
+.about-opc {
+	// background-image: url(../assets/opc-circles-blu.svg);
+	background-position: right -300px top -250px;
+	background-size: 450px 580px;
+	background-repeat: no-repeat;
+	// padding: ($padding-large-vertical * 2) ($padding-large-horizontal * 2);
+}
+
+.further-reading {
+	border-top: 1px solid $color-primary-light;
+	margin-top: $padding-large-vertical * 3;
+
+	.title {
+		margin-top: $padding-large-vertical * 2;
+		color: $gray-dark;
+		font-size: $font-size-large;
+		font-weight: 500;
+	}
+
+	ul {
+		@extend .list-unstyled;
+		font-weight: 500;
+
+		li {
+			margin-bottom: 1em;
+		}
+	}
+}
+
+.helpful-page {
+	background-color: $color-steel;
+	margin-top: $padding-large-vertical * 5;
+	padding: $padding-large-vertical $padding-large-horizontal;
+
+	.title {
+		text-align: center;
+		margin-top: 0;
+		font-size: $font-size-base;
+		font-weight: 400;
+		color: $white;
+	}
+
+	ul {
+		@extend .list-unstyled;
+		@extend .list-inline;
+		text-align: center;
+		margin-bottom: 0;
+	}
+}
+
+.related-content {
+	ul {
+		@extend .list-unstyled;
+
+		li {
+			margin: 1em 0;
+		}
+	}
+}
+
+.alternate-versions {
+	ul {
+		margin-bottom: 0;
+	}
+}
+
+.opc-big-list{
+	.item {
+		padding: ($padding-large-vertical * 3) 0;
+		border-bottom: 1px solid $gray;
+
+		.meta {
+			font-weight: 600;
+			color: $black;
+
+			[class*="col-"]:last-of-type {
+				text-align: right;
+			}
+		}
+
+		.item-content {
+			.item-title {
+				margin-top: $padding-base-vertical;
+
+				a {
+					font-size: $font-size-large;
+				}
+			}
+		}
+	}
+}
+
+.filters {
+	details {
+		border: none;
+		margin: $padding-large-vertical 0;
+
+
+
+		summary {
+			border: none;
+			padding: 0;
+			position: relative;
+
+			&:after {
+				position: absolute;
+				right: 0;
+				font-family: "FontAwesome";
+				content: "\f078";
+			}
+
+			* {
+				font-size: $font-size-large * 1.2;
+				font-weight: 300;
+			}
+
+			&::-webkit-details-marker {
+				display: none;
+			}
+		}
+
+		&[open] {
+			padding-bottom: 0;
+
+			summary:after {
+				content: "\f077";
+			}
+		}
+	}
+}

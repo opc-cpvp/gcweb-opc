@@ -1,0 +1,134 @@
+/*
+ * Site menu
+ */
+#wb-sm {
+	background-color: $black;
+
+	.menu {
+		width: 100%;
+
+		// Active State;
+		.active,
+		.selected,
+		.wb-navcurr {
+			background: $color-highlight !important;
+		}
+
+		> {
+			li {
+				display: table-cell;
+				float: none;
+                border: none;
+
+				&:last-child {
+                    border-right: none;
+                }
+
+				a {
+					color: #fff;
+
+					&:hover,
+					&:focus {
+						background: $color-highlight !important;
+					}
+				}
+			}
+		}
+	}
+
+	// Menu Items ( ul in li's in this case)
+	.sm {
+		// open state
+		&.open {
+			border-bottom: 5px solid $black;
+
+		}
+
+	}
+}
+
+/*
+ * Mobile panel
+ */
+#mb-pnl {
+	background: transparent;
+
+	.modal-header {
+		background: $black;
+		border-bottom: 1px solid $black;
+        padding: 0;
+        padding: initial;
+		position: relative;
+
+		&:before {
+			border-bottom: 1.45em solid $black;
+			border-top: 1.45em solid $black;
+		}
+
+	}
+
+	.modal-body {
+		background: $gray-darker;
+		li{
+			color: white;
+		}
+		span{
+			+ a{
+				display: inline;
+			}
+		}
+	}
+
+	.modal-footer{
+		margin-top: -48px;
+		background: $gray-darker;
+		.overlay-close{
+			color: $gray-darker;
+			background: $btn-default-bg;
+		}
+	}
+
+	.srch-pnl {
+		form {
+			button {
+				background-color: $color-highlight;
+				border-color: $color-highlight;
+
+				&:hover,
+				&:focus,
+				&:active {
+					background: darken($color-highlight, 10%);
+				}
+			}
+
+		}
+
+	}
+
+
+	.sm-pnl {
+		background: $gray-dark;
+	}
+
+	.info-pnl {
+		background: $gray-darker;
+		border-top: 2px solid $gray-darkest;
+	}
+
+	.sec-pnl {
+		background: #cdd4da !important;
+		padding-left: 15px;
+        display: block !important;
+	}
+}
+
+[dir=rtl] {
+	#wb-sm {
+		.menu {
+			> {
+                border-right: none;
+            }
+		}
+	}
+
+}

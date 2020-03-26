@@ -1,0 +1,36 @@
+/*
+* Table of Content styles for document navigation
+*/
+.toc {
+
+	li {
+
+		.list-group-item {
+
+			&:focus,
+			&:hover {
+
+			}
+
+			&.active,
+			&.active:focus,
+			&.active:hover {
+				background-color: #243850;
+			}
+		}
+	}
+
+	&.toc-sidebar {
+		ul {
+			@extend .list-unstyled;
+
+			font-size: 1em;
+			font-weight: 600;
+
+			li {
+				display: block;
+				margin: 1em 0;
+			}
+		}
+	}
+}

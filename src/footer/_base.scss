@@ -1,0 +1,103 @@
+/*
+ Site information
+*/
+
+#wb-info {
+
+	a {
+		font-size: initial;
+		color: $black;
+
+		&:hover, &:active, &:focus {
+			color: $color-primary;
+		}
+
+	}
+
+	.brand {
+		border-top: 4px solid $gray;
+
+		object,
+		img {
+			height: 60px;
+
+		}
+
+		a {
+
+			span {
+				margin-left: 10px;
+			}
+
+			&:hover {
+				text-decoration: none;
+			}
+		}
+	}
+	.ftr-urlt-lnk {
+		ul {
+
+			margin: 0;
+			padding: 0;
+
+			li {
+				display: list-item;
+				margin-right: 0;
+				padding: 0;
+
+				&:before {
+					content: none;
+					margin-right: 0;
+				}
+
+				&:first-child:before {
+					content: none;
+				}
+			}
+		}
+	}
+	.tofpg {
+
+		a {
+			color: $color-primary;
+			font-weight: bold;
+			vertical-align: middle;
+
+			span{
+				margin-left: 0;
+			}
+
+			.fa {
+				font-size: 2em;
+				vertical-align: middle;
+			}
+
+
+			&:hover, &:active, &:focus {
+				color: darken($color-primary, 10%);
+			}
+		}
+	}
+
+	nav {
+		padding-bottom: 1em;
+		padding-top: 0.75em;
+
+		[class*="col-"] {
+			h3 {
+				font-size: 1.10em;
+				font-weight: 700;
+				margin-top: 20px;
+				color: $black;
+			}
+		}
+
+		a {
+			color: $color-primary;
+
+			&:active, &:hover, &:focus {
+				color: darken($color-primary, 10%);
+			}
+		}
+	}
+}

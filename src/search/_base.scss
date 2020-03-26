@@ -1,0 +1,30 @@
+/*
+ * Search
+ */
+#wb-srch,
+.srchbox {
+	margin-top: 2.5em;
+
+	button {
+		background-color: $black;
+		border-color: $black;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: $color-highlight;
+		}
+	}
+
+	input {
+		background-color: $white;
+		border-color: #e0e0e0;
+	}
+
+	input[type="search"]:focus {
+		outline: thin dotted;
+		outline: 5px auto -webkit-focus-ring-color;
+		outline-offset: -2px;
+	}
+}
+

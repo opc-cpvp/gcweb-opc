@@ -1,0 +1,38 @@
+/*
+ Banner
+ */
+
+header {
+
+	background-color: $color-steel;
+	background-image: url(../assets/opc-circles-wht.svg),
+					  url(../assets/opc-circles-wht.svg);
+	background-position: left -950px top -400px,
+						 right -900px top -600px;
+	background-repeat: no-repeat;
+	background-size: 1135px 1469px;
+	z-index: 1;
+
+	.brand {
+
+		object,
+		img {
+            height: auto;
+            max-height: none;
+		}
+	}
+}
+
+/*
+ * Mobile Chevron
+ */
+#wb-glb-mn {
+
+	ul {
+
+		&.chvrn {
+			background: $black;
+
+		}
+	}
+}

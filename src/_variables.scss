@@ -1,0 +1,56 @@
+@import "../lib/GCWeb/src/variables";
+/*
+ Global variables for opc_theme_2015
+ */
+
+$wbGray: #eee;
+$button-blue: #284162;
+$wbGrayLight: #eaebed;
+$accent-blue: #335075;
+$border-red: #af3c43;
+$active-blue: #243850;
+$search-gray: #e0e0e0;
+$profile-gray: #eaebed;
+
+$white: #fff;
+$black: #000;
+$gray-lightest: #eee;
+// $gray-light: #767676 -- CANNOT OVERWRITE UNTIL WET FIXES THEIR REPO
+$gray-lght: #ccc;
+$gray: #5c5c5c; //darken($white, 50%);
+$gray-dark: #666665;
+$gray-darkest: lighten($black, 10%);
+
+$brand-primary: #2572b4;
+$brand-success: #1b6c1c;
+$brand-info: #31708f;
+$brand-warning: #f2d40d;
+$brand-danger: #bc3331;
+
+$color-bg: #f8f8f8;
+$color-primary: #00627e;
+$color-primary-light: #007292;
+$color-highlight: #b31885;
+$color-steel: #4a5459;
+
+// Overrides
+$brand-primary: $color-primary;
+$text-color: $black;
+
+//Heading links on landing pages
+$heading-link: 16px;
+
+/*
+Left menu variables
+*/
+$menu-background: #fff;
+$menu-colour: #555;
+
+$input-color-placeholder: #5c5c5c;
+
+$font-family-sans-serif: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+
+$font-size-base: rem-calc(16);
+
+
+

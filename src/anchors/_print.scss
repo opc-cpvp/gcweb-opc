@@ -1,0 +1,10 @@
+body a {
+	text-decoration: underline !important;
+
+    &:after {
+        text-decoration: none !important;
+        display: inline-block !important;
+        margin-left: 0.25em !important;
+        content: " (" attr(href) ")" !important;
+    }
+}

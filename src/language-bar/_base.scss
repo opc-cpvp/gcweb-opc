@@ -1,0 +1,15 @@
+#wb-lng {
+
+	li {
+
+		a {
+			color: $white;
+			font-weight: bold;
+
+			&:hover, &:active, &:focus {
+				color: $gray-lightest;
+			}
+		}
+	}
+}
+

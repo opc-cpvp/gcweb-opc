@@ -1,0 +1,142 @@
+@charset "utf-8";
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+
+@import "variables";
+
+/* GC Web */
+@import "../lib/GCWeb/src/theme";
+
+/*
+ Components
+ */
+@import "defaults";
+@import "alerts/base";
+@import "banner/base";
+@import "box/base";
+@import "breadcrumb/base";
+@import "buttons/base";
+@import "carousel/base";
+@import "fonts/base";
+@import "footer/base";
+@import "forms/base";
+@import "language-bar/base";
+@import "list-groups/base";
+@import "main/base";
+@import "menu/base";
+@import "nav-pills/base";
+@import "opc/base";
+@import "overlay/base";
+@import "pagination/base";
+@import "promo/base";
+@import "search/base";
+@import "secondary-menu/base";
+@import "social-media-icons/base";
+@import "tabs/base";
+@import "toc/base";
+@import "blog/base";
+
+
+/*
+ Views
+ */
+/* All screen views */
+@media screen {
+	@import "views/screen";
+
+}
+
+/* Extra-small view and under */
+@media screen and (max-width: $screen-xs-max) {
+
+}
+
+/* Small view and under */
+@media screen and (max-width: $screen-sm-max) {
+	@import "examples/screen-sm-max";
+	@import "secondary-menu/screen-sm-max";
+	@import "views/screen-sm-max";
+}
+
+/* Medium view and under */
+@media screen and (max-width: $screen-md-max) {
+	@import "search/screen-md-max";
+	@import "views/screen-md-max";
+}
+
+/* Large view and under */
+@media screen and (max-width: $screen-lg-max) {
+
+}
+
+/* Extra-small view and over */
+@media screen and (min-width: $screen-xs-min) {
+
+}
+
+/* Small view and over */
+@media screen and (min-width: $screen-sm-min) {
+
+}
+
+/* Medium view and over */
+@media screen and (min-width: $screen-md-min) {
+
+}
+
+/* Large view and over */
+@media screen and (min-width: $screen-lg-min) {
+
+}
+
+/* Extra-extra-small view */
+@media screen and (max-width: $screen-xxs-max) {
+
+}
+
+/* Extra-small view */
+@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+
+}
+
+/* Small view */
+@media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+
+}
+
+/* Medium view */
+@media screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+
+}
+
+/* Large view */
+@media screen and (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+
+}
+
+/* Extra-large view */
+@media screen and (min-width: $screen-xl-min) {
+
+}
+
+ /* Print view */
+@media print {
+	body {
+		font-size: 10pt !important;
+	}
+
+	@import "anchors/print";
+	@import "banner/print";
+	@import "box/print";
+	@import "breadcrumb/print";
+	@import "footer/print";
+	@import "helpful-page/print";
+	@import "main/print";
+	@import "opc/print";
+	@import "toc/print";
+	@import "views/print";
+}

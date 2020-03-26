@@ -1,0 +1,28 @@
+.alert {
+
+	&.alert-notice {
+		background-color: $wbGray;
+		margin-top: $padding-large-vertical * 2;
+		margin-bottom: $padding-large-vertical;
+
+		& > :first-child {
+			margin-left: 0;
+		}
+
+		.title {
+			padding-left: $padding-large-horizontal * 2;
+			padding-bottom: $padding-base-vertical;
+			margin-bottom: $padding-large-vertical;
+			font-size: $font-size-large;
+			font-weight: 500;
+			color: $gray-dark;
+			border-bottom: 1px solid $gray;
+
+			&:before {
+				content: "\f06a";
+				font-family: "FontAwesome";
+				color: $color-highlight;
+			}
+		}
+	}
+}

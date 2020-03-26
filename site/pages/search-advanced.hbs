@@ -1,0 +1,75 @@
+---
+{
+	"title": "Advanced Search",
+	"language": "en",
+	"altLangPrefix": "",
+	"pageclass": "search",
+	"breadcrumb": [
+		{ "title": "Home", "link": "/home.html" },
+		{ "title": "Basic Search", "link": "#" }
+	],
+	"toplevel": true,
+	"dateModified": "2014-10-23",
+	"share": "false"
+}
+---
+<section>
+	<form action="#" name="" method="GET" id="cse-search-box" role="form">
+		<fieldset>
+			<legend class="h3 mrgn-tp-sm">Find pages with…</legend>
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label for="advseacon1">all these words:</label>
+					<input name="as_q" class="form-control" id="advseacon1" maxlength="100" value="search">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="advseacon2">this exact word or phrase:</label>
+					<input name="as_epq" class="form-control" id="advseacon2" maxlength="200" value="">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="advseacon3">any of these words:</label>
+					<input name="as_oq" class="form-control" value="" id="advseacon3" maxlength="100">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="advseacon4">none of these words:</label>
+					<input name="as_eq" class="form-control" id="advseacon4" maxlength="100" value="">
+				</div>
+			</div>
+		</fieldset>
+		<fieldset>
+			<legend class="h3 mrgn-tp-sm">Then narrow your results by…</legend>
+				<div class="form-group">
+					<label for="advseacon5">pages updated:</label>
+					<select class="form-control" name="as_qdr" id="advseacon5">
+						<option value="all">anytime</option>
+						<option value="d">past 24 hours</option>
+						<option value="w">past week</option>
+						<option value="m">past month</option>
+						<option value="y">past year</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="advseacon7">site or domain:</label>
+					<input name="1s_s3t2s21rch" class="form-control" id="advseacon7" maxlength="100" value="">
+				</div>
+				<div class="form-group">
+					<label for="advseacon8">terms appearing:</label>
+					<select class="form-control" name="as_occt" id="advseacon8">
+						<option value="any">anywhere in the page</option>
+						<option value="title">in the title of the page</option>
+						<option value="url">in the URL of the page</option>
+						<option value="body">in the body of the page</option>
+					</select>
+				</div>
+		</fieldset>
+		<button type="submit" class="btn btn-md btn-primary">Search</button>
+	</form>
+	<div class="row">
+		<div class="col-md-2">
+			<a href="#">Basic search</a>
+		</div>
+		<div class="col-md-2">
+			<a href="#">Search tips</a>
+		</div>
+	</div>
+</section>

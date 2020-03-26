@@ -1,0 +1,12 @@
+.box{
+	&.toc{
+		padding: 0;
+		border: none;
+		h2{
+			border-bottom: none;
+		}
+		a:after{
+			display: none !important;
+		}
+	}
+}

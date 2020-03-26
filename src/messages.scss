@@ -1,0 +1,25 @@
+// Welcome page styles
+
+@import "../lib/GCWeb/src/messages";
+
+//Variables
+@import "variables";
+
+
+
+// Error messages styles
+.error {
+	.pagetag {
+		margin-left: 75px;
+	}
+}
+
+.splash {
+	.sp-bx {
+		border: 1px solid #ddd;
+	}
+	.sp-bx-bt {
+		background-color: $wbGray;
+		border: 1px solid #ddd;
+	}
+}

@@ -1,0 +1,12 @@
+/*
+ * Main content area (print view)
+ */
+// For Firefox
+main {
+
+    > .row {
+        > [class^="col-md-"] {
+            width: 100%;
+        }
+    }
+}

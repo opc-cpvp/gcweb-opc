@@ -1,0 +1,614 @@
+---
+{
+	"title": "Buttons",
+	"language": "en",
+	"altLangPrefix": "buttons",
+	"dateModified": "2014-08-07"
+}
+---
+<span class="wb-prettify all-pre"></span>
+
+<div class="row">
+	<section class="col-md-8">
+		<div class="panel panel-default">
+			<header class="panel-heading">
+				<h2 class="panel-title">Table of contents</h2>
+			</header>
+			<div class="panel-body">
+				<ul class="clmn-2-sm">
+					<li><a href="#description">Description</a></li>
+					<li><a href="#default">Default appearance </a></li>
+					<li><a href="#buttons-tags">Button basics</a></li>
+					<li><a href="#buttons-options">Colour options</a></li>
+					<li><a href="#buttons-sizes">Size options</a></li>
+					<li><a href="#buttons-block">Full width</a></li>
+					<li><a href="#buttons-active">Active state</a></li>
+					<li><a href="#buttons-disabled">Disabled state</a></li>
+					<li><a href="#btn-groups">Groups and toolbars</a></li>
+					<li><a href="#btn-dropdowns">Dropdowns</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section class="col-md-4">
+		<div class="well">
+			<h2 class="h3 mrgn-tp-0">Related</h2>
+			<section>
+				<h3 class="h4">Design guide</h3>
+				<ul class="list-unstyled mrgn-lft-lg lst-spcd">
+					<li><a href="forms-en.html">Forms<span class="wb-inv"> - Design guide</span></a></li>
+				</ul>
+			</section>
+		</div>
+	</section>
+</div>
+
+<section>
+	<h2 class="page-header" id="description">Description</h2>
+	<p>(Info goes here)</p>
+</section>
+
+<section>
+	<h2 class="page-header" id="default">Default appearance</h2>
+	<p>The browser will show certain elements as a button. However, there is often a lack of visual consistency for each button type. Furthermore, each browser can have a different button default appearance. For example:</p>
+	<ul class="list-inline">
+		<li><button type="submit">Button</button></li>
+		<li><input type="button" value="Input" /></li>
+		<li><input type="submit" value="Submit" /></li>
+	</ul>
+
+	<pre><code>&lt;ul class=&quot;list-inline&quot;&gt;
+	&lt;li&gt;&lt;button type=&quot;submit&quot;&gt;Button&lt;/button&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;input type=&quot;button&quot; value=&quot;Input&quot; /&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</section>
+
+<section>
+	<h2 class="page-header" id="buttons-tags">Button basics</h2>
+	<p>Use the button classes on an <code>&lt;a&gt;</code>, <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> element to create visual consistency.</p>
+	<ul class="list-inline">
+		<li><a class="btn btn-default" href="#" role="button">Link</a></li>
+		<li><button class="btn btn-default" type="submit">Button</button></li>
+		<li><input class="btn btn-default" type="button" value="Input" /></li>
+		<li><input class="btn btn-default" type="submit" value="Submit" /></li>
+	</ul>
+
+	<div class="mrgn-tp-lg">
+		<pre><code>&lt;ul class=&quot;list-inline&quot;&gt;
+	&lt;li&gt;&lt;a class=&quot;btn btn-default&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;button class=&quot;btn btn-default&quot; type=&quot;submit&quot;&gt;Button&lt;/button&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;input class=&quot;btn btn-default&quot; type=&quot;button&quot; value=&quot;Input&quot; /&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;input class=&quot;btn btn-default&quot; type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+	</div>
+
+	<section class="alert alert-info">
+		<h3>Cross-browser rendering</h3>
+		<p>As a best practice, <strong>we highly recommend using the <code>&lt;button&gt;</code> element whenever possible</strong> to ensure matching cross-browser rendering.</p>
+		<p>Among other things, there's <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=697451">a Firefox bug</a> that prevents us from setting the <code>line-height</code> of <code>&lt;input&gt;</code>-based buttons, causing them to not exactly match the height of other buttons on Firefox.</p>
+	</section>
+
+	<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+		<section class="col-md-6">
+			<h3 class="mrgn-tp-0 text-success h4">Use when <span class="glyphicon glyphicon-ok-circle"></span></h3>
+			<p>(Info goes here)</p>
+		</section>
+
+		<section class="col-md-6 brdr-lft">
+			<h3 class="mrgn-tp-0 text-danger h4">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h3>
+			<p>(Info goes here)</p>
+		</section>
+	</div>
+</section>
+
+<section>
+	<h2 class="page-header" id="buttons-options">Colour options</h2>
+	<p>Use any of the available button classes to quickly create a styled button.</p>
+	<ul class="list-inline">
+		<li><button type="button" class="btn btn-default">Default</button></li>
+		<li><button type="button" class="btn btn-primary">Primary</button></li>
+		<li><button type="button" class="btn btn-success">Success</button></li>
+		<li><button type="button" class="btn btn-info">Info</button></li>
+		<li><button type="button" class="btn btn-warning">Warning</button></li>
+		<li><button type="button" class="btn btn-danger">Danger</button></li>
+		<li><button type="button" class="btn btn-link">Link</button></li>
+	</ul>
+
+	<div class="mrgn-tp-lg">
+		<pre><code>&lt;!-- Standard button --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Default&lt;/button&gt;
+
+&lt;!-- Provides extra visual weight and identifies the primary action in a set of buttons --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
+
+&lt;!-- Indicates a successful or positive action --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt;
+
+&lt;!-- Contextual button for informational alert messages --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;Info&lt;/button&gt;
+
+&lt;!-- Indicates caution should be taken with this action --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-warning&quot;&gt;Warning&lt;/button&gt;
+
+&lt;!-- Indicates a dangerous or potentially negative action --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;Danger&lt;/button&gt;
+
+&lt;!-- Deemphasize a button by making it look like a link while maintaining button behavior --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn-link&quot;&gt;Link&lt;/button&gt;</code></pre>
+	</div>
+
+	<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+		<section class="col-md-6">
+			<h3 class="mrgn-tp-0 text-success h4">Use when <span class="glyphicon glyphicon-ok-circle"></span></h3>
+			<p>(Info goes here)</p>
+		</section>
+
+		<section class="col-md-6 brdr-lft">
+			<h3 class="mrgn-tp-0 text-danger h4">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h3>
+			<p>(Info goes here)</p>
+		</section>
+	</div>
+</section>
+
+<section>
+	<h2 class="page-header" id="buttons-sizes">Size options</h2>
+	<p>Fancy larger or smaller buttons? Add <code>btn-lg</code>, <code>btn-sm</code>, or <code>btn-xs</code> for additional sizes.</p>
+	<ul class="list-unstyled">
+		<li class="mrgn-tp-md">
+			<ul class="list-inline">
+				<li><button type="button" class="btn btn-primary btn-lg">Large button</button></li>
+				<li><button type="button" class="btn btn-default btn-lg">Large button</button></li>
+			</ul>
+		</li>
+		<li class="mrgn-tp-md">
+			<ul class="list-inline">
+				<li><button type="button" class="btn btn-primary">Default button</button></li>
+				<li><button type="button" class="btn btn-default">Default button</button></li>
+			</ul>
+		</li>
+		<li class="mrgn-tp-md">
+			<ul class="list-inline">
+				<li><button type="button" class="btn btn-primary btn-sm">Small button</button></li>
+				<li><button type="button" class="btn btn-default btn-sm">Small button</button></li>
+			</ul>
+		</li>
+		<li class="mrgn-tp-md">
+			<ul class="list-inline">
+				<li><button type="button" class="btn btn-primary btn-xs">Extra small button</button></li>
+				<li><button type="button" class="btn btn-default btn-xs">Extra small button</button></li>
+			</ul>
+		</li>
+	</ul>
+
+	<div class="mrgn-tp-lg">
+		<pre><code>&lt;ul class="list-unstyled"&gt;
+	&lt;li class="mrgn-tp-md"&gt;
+		&lt;ul class="list-inline"&gt;
+			&lt;li&gt;&lt;button type="button" class="btn btn-primary btn-lg"&gt;Large button&lt;/button&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;button type="button" class="btn btn-default btn-lg"&gt;Large button&lt;/button&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li class="mrgn-tp-md"&gt;
+		&lt;ul class="list-inline"&gt;
+			&lt;li&gt;&lt;button type="button" class="btn btn-primary"&gt;Default button&lt;/button&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;button type="button" class="btn btn-default"&gt;Default button&lt;/button&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li class="mrgn-tp-md"&gt;
+		&lt;ul class="list-inline"&gt;
+			&lt;li&gt;&lt;button type="button" class="btn btn-primary btn-sm"&gt;Small button&lt;/button&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;button type="button" class="btn btn-default btn-sm"&gt;Small button&lt;/button&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+	&lt;li class="mrgn-tp-md"&gt;
+		&lt;ul class="list-inline"&gt;
+			&lt;li&gt;&lt;button type="button" class="btn btn-primary btn-xs"&gt;Extra small button&lt;/button&gt;&lt;/li&gt;
+			&lt;li&gt;&lt;button type="button" class="btn btn-default btn-xs"&gt;Extra small button&lt;/button&gt;&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+	</div>
+
+	<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+		<section class="col-md-6">
+			<h3 class="mrgn-tp-0 text-success h4">Use when <span class="glyphicon glyphicon-ok-circle"></span></h3>
+			<p>(Info goes here)</p>
+		</section>
+
+		<section class="col-md-6 brdr-lft">
+			<h3 class="mrgn-tp-0 text-danger h4">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h3>
+			<p>(Info goes here)</p>
+		</section>
+	</div>
+</section>
+
+<section>
+	<h2 class="page-header" id="buttons-block">Full width buttons</h2>
+	<p>Create block level buttons&mdash;those that span the full width of a parent&mdash; by adding <code>btn-block</code>.</p>
+
+	<div class="row">
+		<div class="col-xs-6">
+			<button type="button" class="btn btn-primary btn-lg btn-block">Block level button</button>
+			<button type="button" class="btn btn-default btn-lg btn-block">Block level button</button>
+		</div>
+	</div>
+
+	<div class="mrgn-tp-lg">
+		<pre><code>&lt;div class=&quot;col-xs-6&quot;&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-lg btn-block&quot;&gt;Block level button&lt;/button&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-lg btn-block&quot;&gt;Block level button&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+	</div>
+
+	<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+		<section class="col-md-6">
+			<h3 class="mrgn-tp-0 text-success h4">Use when <span class="glyphicon glyphicon-ok-circle"></span></h3>
+			<p>(Info goes here)</p>
+		</section>
+
+		<section class="col-md-6 brdr-lft">
+			<h3 class="mrgn-tp-0 text-danger h4">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h3>
+			<p>(Info goes here)</p>
+		</section>
+	</div>
+</section>
+
+<section>
+	<h2 class="page-header" id="buttons-active">Active state</h2>
+	<p>Buttons will appear pressed (with a darker background, darker border, and inset shadow) when active. For <code>&lt;button&gt;</code> elements, this is done via <code>:active</code>. For <code>&lt;a&gt;</code> elements, it's done with <code>.active</code>. However, you may use <code>active</code> <code>&lt;button&gt;</code>s should you need to replicate the active state programmatically.</p>
+	<section>
+		<h3>Button element</h3>
+		<p>No need to add <code>:active</code> as it's a pseudo-class, but if you need to force the same appearance, go ahead and add <code>active</code>.</p>
+		<ul class="list-inline">
+			<li><button type="button" class="btn btn-primary btn-lg active">Primary button</button></li>
+			<li><button type="button" class="btn btn-default btn-lg active">Button</button></li>
+		</ul>
+
+		<div class="mrgn-tp-lg">
+			<pre><code>&lt;ul class=&quot;list-inline&quot;&gt;
+	&lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-lg active&quot;&gt;Primary button&lt;/button&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-lg active&quot;&gt;Button&lt;/button&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;code&gt;</code></pre>
+		</div>
+
+		<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+			<section class="col-md-6">
+				<h3 class="mrgn-tp-0 text-success h4">Use when <span class="glyphicon glyphicon-ok-circle"></span></h3>
+				<p>(Info goes here)</p>
+			</section>
+
+			<section class="col-md-6 brdr-lft">
+				<h3 class="mrgn-tp-0 text-danger h4">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h3>
+				<p>(Info goes here)</p>
+			</section>
+		</div>
+	</section>
+
+	<section>
+		<h3>Anchor element</h3>
+		<p>Add the <code>active</code> class to <code>&lt;a&gt;</code> buttons.</p>
+		<ul class="list-inline">
+			<li><a href="#" class="btn btn-primary btn-lg active" role="button">Primary link</a></li>
+			<li><a href="#" class="btn btn-default btn-lg active" role="button">Link</a></li>
+		</ul>
+
+		<div class="mrgn-tp-lg">
+			<pre><code>&lt;ul class=&quot;list-inline&quot;&gt;
+	&lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;btn btn-primary btn-lg active&quot; role=&quot;button&quot;&gt;Primary link&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;btn btn-default btn-lg active&quot; role=&quot;button&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+		</div>
+
+		<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+			<section class="col-md-6">
+				<h3 class="mrgn-tp-0 text-success h4">Use when <span class="glyphicon glyphicon-ok-circle"></span></h3>
+				<p>(Info goes here)</p>
+			</section>
+
+			<section class="col-md-6 brdr-lft">
+				<h3 class="mrgn-tp-0 text-danger h4">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h3>
+				<p>(Info goes here)</p>
+			</section>
+		</div>
+	</section>
+</section>
+
+<section>
+	<h2 class="page-header" id="buttons-disabled">Disabled state</h2>
+	<p>Make buttons look unclickable by fading them back 50%.</p>
+	<section>
+		<h3>Button element</h3>
+		<p>Add the <code>disabled</code> attribute to <code>&lt;button&gt;</code> buttons.</p>
+		<ul class="list-inline">
+			<li><button type="button" class="btn btn-primary btn-lg" disabled="disabled">Primary button</button></li>
+			<li><button type="button" class="btn btn-default btn-lg" disabled="disabled">Button</button></li>
+		</ul>
+
+		<div class="mrgn-tp-lg">
+			<pre><code>&lt;ul class=&quot;list-inline&quot;&gt;
+	&lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-lg&quot; disabled=&quot;disabled&quot;&gt;Primary button&lt;/button&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;button type=&quot;button&quot; class=&quot;btn btn-default btn-lg&quot; disabled=&quot;disabled&quot;&gt;Button&lt;/button&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+		</div>
+
+		<section class="alert alert-danger">
+			<h4>Cross-browser compatibility</h4>
+			<p>If you add the <code>disabled</code> attribute to a <code>&lt;button&gt;</code>, Internet Explorer 9 and below will render text gray with a ugly text-shadow that cannot be fixed.</p>
+		</section>
+	</section>
+
+	<section>
+		<h3>Anchor element</h3>
+		<p>Add the <code>disabled</code> class to <code>&lt;a&gt;</code> buttons.</p>
+		<ul class="list-inline">
+			<li><a class="btn btn-primary btn-lg disabled" role="button">Primary link</a></li>
+			<li><a class="btn btn-default btn-lg disabled" role="button">Link</a></li>
+		</ul>
+
+		<div class="mrgn-tp-lg">
+			<pre><code>&lt;ul class=&quot;list-inline&quot;&gt;
+	&lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;btn btn-primary btn-lg disabled&quot; role=&quot;button&quot;&gt;Primary link&lt;/a&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;btn btn-default btn-lg disabled&quot; role=&quot;button&quot;&gt;Link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+		</div>
+
+		<p>We use <code>disabled</code> as a utility class here, similar to the common <code>active</code> class, so no prefix is required.</p>
+
+		<section class="alert alert-warning">
+			<h4>Link functionality not impacted</h4>
+			<p>This class will only change the <code>&lt;a&gt;</code>'s appearance, not its functionality. Remove the href attribute to disable links here.</p>
+		</section>
+
+		<section class="alert alert-warning">
+			<h4>Context-specific usage</h4>
+			<p>While button classes can be used on <code>&lt;a&gt;</code> and <code>&lt;button&gt;</code> elements, only <code>&lt;button&gt;</code> elements are supported within our nav and navbar components.</p>
+		</section>
+	</section>
+
+	<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+		<section class="col-md-6">
+			<h3 class="mrgn-tp-0 text-success h4">Use when <span class="glyphicon glyphicon-ok-circle"></span></h3>
+			<p>(Info goes here)</p>
+		</section>
+
+		<section class="col-md-6 brdr-lft">
+			<h3 class="mrgn-tp-0 text-danger h4">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h3>
+			<p>(Info goes here)</p>
+		</section>
+	</div>
+</section>
+
+<section>
+	<h2 class="page-header" id="btn-groups">Groups and toolbars</h2>
+	<p>Group a series of buttons together on a single line with the button group.</p>
+	<section>
+		<h3 id="btn-groups-single">Basic example</h3>
+		<p>Wrap a series of buttons with <code>btn</code> in <code>btn-group</code>.</p>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default">Left</button>
+			<button type="button" class="btn btn-default">Middle</button>
+			<button type="button" class="btn btn-default">Right</button>
+		</div>
+
+		<div class="mrgn-tp-lg">
+			<pre><code>&lt;div class=&quot;btn-group&quot;&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Left&lt;/button&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Middle&lt;/button&gt;
+	&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Right&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+		</div>
+	</section>
+
+	<section>
+		<h3 id="btn-groups-toolbar">Button toolbar</h3>
+		<p>Combine sets of <code>&lt;div class="btn-group"&gt;</code> into a <code>&lt;div class="btn-toolbar"&gt;</code> for more complex components.</p>
+
+		<ul class="btn-toolbar list-inline" role="toolbar">
+			<li class="btn-group">
+				<button type="button" class="btn btn-default">1</button>
+				<button type="button" class="btn btn-default">2</button>
+				<button type="button" class="btn btn-default">3</button>
+				<button type="button" class="btn btn-default">4</button>
+			</li>
+			<li class="btn-group">
+				<button type="button" class="btn btn-default">5</button>
+				<button type="button" class="btn btn-default">6</button>
+				<button type="button" class="btn btn-default">7</button>
+			</li>
+			<li class="btn-group">
+				<button type="button" class="btn btn-default">8</button>
+			</li>
+		</ul>
+
+		<div class="mrgn-tp-lg">
+			<pre><code>&lt;ul class=&quot;btn-toolbar list-inline&quot; role=&quot;toolbar&quot;&gt;
+	&lt;li class=&quot;btn-group&quot;&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;1&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;2&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;3&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;4&lt;/button&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;btn-group&quot;&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;5&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;6&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;7&lt;/button&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;btn-group&quot;&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;8&lt;/button&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+		</div>
+
+		<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+			<section class="col-md-6">
+				<h4 class="mrgn-tp-0 text-success">Use when <span class="glyphicon glyphicon-ok-circle"></span></h4>
+				<p>(Info goes here)</p>
+			</section>
+
+			<section class="col-md-6 brdr-lft">
+				<h4 class="mrgn-tp-0 text-danger">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h4>
+				<p>(Info goes here)</p>
+			</section>
+		</div>
+	</section>
+
+	<section>
+		<h3 id="btn-groups-sizing">Sizing</h3>
+		<p>Instead of applying button sizing classes to every button in a group, just add <code>btn-group-*</code> to the <code>btn-group</code>.</p>
+
+		<section>
+			<h4>Large</h4>
+			<div class="btn-group btn-group-lg mrgn-bttm-md">
+				<button type="button" class="btn btn-default">Left</button>
+				<button type="button" class="btn btn-default">Middle</button>
+				<button type="button" class="btn btn-default">Right</button>
+			</div>
+		</section>
+
+		<section>
+			<h4>Medium (default)</h4>
+			<div class="btn-group mrgn-bttm-md">
+				<button type="button" class="btn btn-default">Left</button>
+				<button type="button" class="btn btn-default">Middle</button>
+				<button type="button" class="btn btn-default">Right</button>
+			</div>
+		</section>
+
+		<section>
+			<h4>Small</h4>
+			<div class="btn-group btn-group-sm mrgn-bttm-md">
+				<button type="button" class="btn btn-default">Left</button>
+				<button type="button" class="btn btn-default">Middle</button>
+				<button type="button" class="btn btn-default">Right</button>
+			</div>
+		</section>
+
+		<section>
+			<h4>Extra-small</h4>
+			<div class="btn-group btn-group-xs">
+				<button type="button" class="btn btn-default">Left</button>
+				<button type="button" class="btn btn-default">Middle</button>
+				<button type="button" class="btn btn-default">Right</button>
+			</div>
+		</section>
+
+		<div class="mrgn-tp-lg">
+			<pre><code>&lt;ul class=&quot;list-unstyled&quot;&gt;
+	&lt;li class=&quot;btn-group btn-group-lg mrgn-bttm-md&quot;&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Left&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Middle&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Right&lt;/button&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;btn-group mrgn-bttm-md&quot;&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Left&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Middle&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Right&lt;/button&gt;
+	&lt;/li&gt;
+	&lt;/li class=&quot;btn-group btn-group-sm mrgn-bttm-md&quot;&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Left&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Middle&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Right&lt;/button&gt;
+	&lt;/li&gt;
+	&lt;li class=&quot;btn-group btn-group-xs&quot;&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Left&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Middle&lt;/button&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Right&lt;/button&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+		</div>
+
+		<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+			<section class="col-md-6">
+				<h4 class="mrgn-tp-0 text-success">Use when <span class="glyphicon glyphicon-ok-circle"></span></h4>
+				<p>(Info goes here)</p>
+			</section>
+
+			<section class="col-md-6 brdr-lft">
+				<h4 class="mrgn-tp-0 text-danger">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h4>
+				<p>(Info goes here)</p>
+			</section>
+		</div>
+	</section>
+
+	<section>
+		<h3 id="btn-groups-justified">Justified button groups</h3>
+		<section class="alert alert-warning">
+			<h4>Handling borders</h4>
+			<p>Due to the specific HTML and CSS used to justify buttons (namely <code>display: table-cell</code>), the borders between them are doubled. In regular button groups, <code>margin-left: -1px</code> is used to stack the borders instead of removing them. However, <code>margin</code> doesn't work with <code>display: table-cell</code>. As a result, depending on your customizations to Bootstrap, you may wish to remove or re-color the borders.</p>
+		</section>
+
+		<section>
+			<h4>With <code>&lt;a&gt;</code> elements</h4>
+			<p>Just wrap a series of <code>btn</code>s in <code>btn-group btn-group-justified</code>.</p>
+			<div class="btn-group btn-group-justified">
+				<a class="btn btn-default" role="button">Left</a>
+				<a class="btn btn-default" role="button">Middle</a>
+				<a class="btn btn-default" role="button">Right</a>
+			</div>
+ 
+			<div class="mrgn-tp-lg">
+				<pre><code class="html">&lt;div class="btn-group btn-group-justified"&gt;
+	...
+&lt;/div&gt;</code></pre>
+			</div>
+
+			<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+				<section class="col-md-6">
+					<h5 class="mrgn-tp-0 text-success">Use when <span class="glyphicon glyphicon-ok-circle"></span></h5>
+					<p>(Info goes here)</p>
+				</section>
+
+				<section class="col-md-6 brdr-lft">
+					<h5 class="mrgn-tp-0 text-danger">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h5>
+					<p>(Info goes here)</p>
+				</section>
+			</div>
+		</section>
+
+		<section>
+			<h4 class="mrgn-tp-lg">With <code>&lt;button&gt;</code> elements</h4>
+			<p>To use justified button groups with <code>&lt;button&gt;</code> elements, <strong class="text-danger">you must wrap each button in a button group</strong>. Most browsers don't properly apply our CSS for justification to <code>&lt;button&gt;</code> elements, but since we support button dropdowns, we can workaround that.</p>
+			<div class="btn-group btn-group-justified">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default">Left</button>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default">Middle</button>
+				</div>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default">Right</button>
+				</div>
+			</div>
+
+			<div class="mrgn-tp-lg">
+				<pre><code>&lt;div class=&quot;btn-group btn-group-justified&quot;&gt;
+	&lt;div class=&quot;btn-group&quot;&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Left&lt;/button&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;btn-group&quot;&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Middle&lt;/button&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;btn-group&quot;&gt;
+		&lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot;&gt;Right&lt;/button&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+			</div>
+
+			<div class="row wb-eqht mrgn-tp-lg mrgn-bttm-xl">
+				<section class="col-md-6">
+					<h5 class="mrgn-tp-0 text-success">Use when <span class="glyphicon glyphicon-ok-circle"></span></h5>
+					<p>(Info goes here)</p>
+				</section>
+
+				<section class="col-md-6 brdr-lft">
+					<h5 class="mrgn-tp-0 text-danger">Do not use when <span class="glyphicon glyphicon-remove-circle"></span></h5>
+					<p>(Info goes here)</p>
+				</section>
+			</div>
+		</section>
+	</section>
+</section>
+
+<p class="mrgn-tp-lg"><span class="glyphicon glyphicon-info-sign"></span> Code and documentation for this page is sourced from <a href="http://getbootstrap.com/" rel="external">Bootstrap</a> and <a href="http://wet-boew.github.io/wet-boew/" rel="external">Web Experience Toolkit (WET)</a></p>

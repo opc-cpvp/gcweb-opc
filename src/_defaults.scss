@@ -1,0 +1,70 @@
+/*
+	Global Default Body styling
+*/
+@media screen {
+
+body {
+	font-family: $font-family-sans-serif;
+	font-weight: 400;
+	background: url(../assets/opc-circles-pnk.svg) no-repeat left -950px top -400px,
+				url(../assets/opc-circles-pnk.svg) no-repeat right -900px top -600px !important;
+	background-color: $color-bg !important;
+	background-size: 1135px 1469px !important;
+}
+
+a {
+	color: $color-primary;
+}
+
+/* Theme base styles */
+%defaults-font-family {
+	font-family: $font-family-sans-serif;
+}
+
+h1 {
+	border-bottom: 1px solid $color-primary-light;
+	margin-bottom: 1em;
+}
+
+.secondary,
+.home {
+	.h1 {
+		border-bottom: 1px solid $color-primary-light;
+		margin-bottom: 1em;
+	}
+}
+
+/* Thumbnail Treatments */
+.thumbnail {
+	padding: 0;
+
+}
+
+.pagedetails {
+	details {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.datemod {
+		#wb-dtmd {
+			time {
+				font-weight: bold;
+			}
+		}
+	}
+}
+
+}
+
+
+.block {
+	display: block;
+}
+
+.strong {
+	font-weight: bold;
+}
+
+.divider-right {
+	border-right: 1px solid $gray-lght;
+}

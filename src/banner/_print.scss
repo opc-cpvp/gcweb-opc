@@ -1,0 +1,8 @@
+header{
+	.brand{
+		a:after{
+			content: '' !important;
+			display: none;
+		}
+	}
+}
