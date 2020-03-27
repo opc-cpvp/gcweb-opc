@@ -1,4 +1,4 @@
-FROM node:6
+FROM opccpvp/gcweb-opc-build:v4.0.26
 
 # Create the folder that will host our application and set the ownership to the node user
 RUN mkdir -p /home/node/app/lib && \
@@ -7,14 +7,6 @@ RUN mkdir -p /home/node/app/lib && \
 
 # Set the working directory
 WORKDIR /home/node/app
-
-# Install OpenJDK 8 JRE & Python 2.7
-RUN apt-get update && \
-    apt-get install -y openjdk-8-jre python
-
-# Install Bower & Grunt
-RUN npm install -g bower grunt-cli && \
-    npm cache clean --force
 
 # Switch to the non-root user node
 USER node
