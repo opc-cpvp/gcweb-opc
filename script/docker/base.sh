@@ -22,5 +22,5 @@ run () {
 	  --pid=host \
 	  --rm \
 	  $extra_params \
-	  wetboew/wet-boew-build $@
+	  opccpvp/gcweb-opc-build $@
 }
