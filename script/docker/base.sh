@@ -4,6 +4,12 @@ if ! type docker > /dev/null; then
   exit 0
 fi
 
+GCWEB_TAG="latest"
+PKG_FILE="${PWD}/package.json"
+if [[ -f $PKG_FILE ]]; then
+	GCWEB_TAG="v$( cat "${PKG_FILE}" | jq -r '.version' )"
+fi
+
 run () {
 	docker run -it \
 	  -w "/home/node/app" \
@@ -22,5 +28,5 @@ run () {
 	  --pid=host \
 	  --rm \
 	  $extra_params \
-	  opccpvp/gcweb-opc-build $@
+	  opccpvp/gcweb-opc-build:${GCWEB_TAG} $@
 }
