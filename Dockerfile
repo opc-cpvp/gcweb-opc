@@ -2,7 +2,7 @@ FROM opccpvp/gcweb-opc-build:v4.0.26
 
 # Create the folder that will host our application and set the ownership to the node user
 RUN mkdir -p /home/node/app/lib && \
-	mkdir -p /home/node/app/node_modules && \
+    mkdir -p /home/node/app/node_modules && \
     chown -R node:node /home/node/app
 
 # Set the working directory
