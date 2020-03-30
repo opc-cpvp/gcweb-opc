@@ -4,10 +4,10 @@ if ! type docker > /dev/null; then
   exit 0
 fi
 
-GCWEB_TAG="latest"
+GCWEB_OPC_TAG="latest"
 PKG_FILE="${PWD}/package.json"
 if [[ -f $PKG_FILE ]]; then
-  GCWEB_TAG="v$( cat "${PKG_FILE}" | jq -r '.version' )"
+  GCWEB_OPC_TAG="v$( cat "${PKG_FILE}" | jq -r '.version' )"
 fi
 
 run () {
