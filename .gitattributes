@@ -5,11 +5,16 @@
 *.js      text
 *.css     text
 *.scss    text
-*.hbs     text
+*.html    text
+*.php     text
+*.inc     text
+*.xml     text
 *.txt     text
 *.md      text
+*.properties  text
+*.rb      text
 *.yml     text
-*.sh      text
+
 
 # Images should be treated as binary
 # (binary is a macro for -text -diff)
