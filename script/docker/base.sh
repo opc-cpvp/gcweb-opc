@@ -7,7 +7,7 @@ fi
 GCWEB_TAG="latest"
 PKG_FILE="${PWD}/package.json"
 if [[ -f $PKG_FILE ]]; then
-	GCWEB_TAG="v$( cat "${PKG_FILE}" | jq -r '.version' )"
+  GCWEB_TAG="v$( cat "${PKG_FILE}" | jq -r '.version' )"
 fi
 
 run () {
