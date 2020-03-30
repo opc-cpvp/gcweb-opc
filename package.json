@@ -4,7 +4,7 @@
   "scripts": {
     "test": "grunt test",
     "postinstall": "bower update",
-    "travis_script": "grunt dist test-mocha",
+    "travis_script": "grunt dist",
     "travis_after_success": "grunt deploy"
   },
   "author": "",
