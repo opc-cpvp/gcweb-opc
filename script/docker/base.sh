@@ -28,5 +28,5 @@ run () {
 	  --pid=host \
 	  --rm \
 	  $extra_params \
-	  opccpvp/gcweb-opc-build:${GCWEB_TAG} $@
+	  opccpvp/gcweb-opc-build:${GCWEB_OPC_TAG} $@
 }
