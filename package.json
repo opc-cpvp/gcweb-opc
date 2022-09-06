@@ -2,10 +2,8 @@
   "name": "gcweb-opc",
   "version": "4.0.26",
   "scripts": {
-    "test": "grunt test",
-    "postinstall": "bower update",
-    "travis_script": "grunt dist",
-    "travis_after_success": "grunt deploy"
+    "test": "grunt",
+    "postinstall": "bower update"
   },
   "author": "",
   "license": "MIT",
