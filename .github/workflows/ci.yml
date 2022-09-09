@@ -12,8 +12,16 @@ jobs:
     strategy:
       matrix:
         node-version: [6.x]
+        java-version: [8]
     steps:
       - uses: actions/checkout@v2
+
+      - name: Use Java ${{ matrix.java-version }}
+        uses: actions/setup-java@v3
+        with:
+          distribution: "temurin"
+          java-version: ${{ matrix.java-version }}
+          java-package: jre
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -26,4 +34,4 @@ jobs:
           npm install
 
       - name: Build GCWeb-OPC
-        run: grunt dist test-mocha
+        run: grunt dist
