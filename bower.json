@@ -1,27 +1,28 @@
 {
-  "name": "gcweb-opc",
-  "version": "4.0.26",
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "bower.json",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests",
-    "lib"
-  ],
-  "devDependencies": {
-    "wet-boew": "4.0.26",
-    "GCWeb": "https://github.com/wet-boew/GCWeb.git#4.0.26"
-  },
-  "description": "GC Web extension theme for the Office of the Privacy Commissioner - A theme for WET-BOEW",
-  "main": [
-    "src/theme.js",
-    "src/theme.scss"
-  ],
-  "keywords": [
-    "wet-boew",
-    "theme"
-  ]
+    "name": "gcweb-opc",
+    "version": "4.0.26",
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "bower.json",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests",
+        "lib"
+    ],
+    "devDependencies": {
+        "jquery": "2.1.4",
+        "jquery-oldIE": "jquery#1.11.1",
+        "GCWeb": "https://github.com/wet-boew/GCWeb.git#4.0.26"
+    },
+    "description": "GC Web extension theme for the Office of the Privacy Commissioner - A theme for WET-BOEW",
+    "main": [
+        "src/theme.js",
+        "src/theme.scss"
+    ],
+    "keywords": [
+        "wet-boew",
+        "theme"
+    ]
 }
