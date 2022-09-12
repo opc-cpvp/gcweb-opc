@@ -1,5 +1,4 @@
 {
-  "allow_root": true,
   "directory": "lib",
   "scripts": {
     "postinstall": "grunt init"
