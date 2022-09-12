@@ -12,7 +12,6 @@
     "trailing": true,
     "undef": true,
     "unused": true,
-
     "globals": {
         "wb": true,
         "Modernizr": true,
