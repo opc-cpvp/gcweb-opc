@@ -1,9 +1,9 @@
-FROM node:6
+FROM node:8
 
 RUN npm install -g \
     grunt-cli@1.3.2 \
     bower@1.8.12 \
-    && npm cache clean
+    && npm cache clean --force
 
 RUN echo 'deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/jessie-backports.list
 

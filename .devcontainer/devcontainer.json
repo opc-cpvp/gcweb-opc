@@ -4,5 +4,8 @@
     },
     "forwardPorts": [
         8000
+    ],
+    "mounts": [
+        "source=gcweb-opc-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
     ]
 }
