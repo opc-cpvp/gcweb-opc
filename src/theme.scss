@@ -9,7 +9,7 @@
 @import "variables";
 
 /* GC Web */
-@import "../lib/GCWeb/src/theme";
+@import "../node_modules/GCWeb/src/theme";
 
 /*
  Components
@@ -51,9 +51,7 @@
 }
 
 /* Extra-small view and under */
-@media screen and (max-width: $screen-xs-max) {
-
-}
+@media screen and (max-width: $screen-xs-max) {}
 
 /* Small view and under */
 @media screen and (max-width: $screen-sm-max) {
@@ -69,61 +67,39 @@
 }
 
 /* Large view and under */
-@media screen and (max-width: $screen-lg-max) {
-
-}
+@media screen and (max-width: $screen-lg-max) {}
 
 /* Extra-small view and over */
-@media screen and (min-width: $screen-xs-min) {
-
-}
+@media screen and (min-width: $screen-xs-min) {}
 
 /* Small view and over */
-@media screen and (min-width: $screen-sm-min) {
-
-}
+@media screen and (min-width: $screen-sm-min) {}
 
 /* Medium view and over */
-@media screen and (min-width: $screen-md-min) {
-
-}
+@media screen and (min-width: $screen-md-min) {}
 
 /* Large view and over */
-@media screen and (min-width: $screen-lg-min) {
-
-}
+@media screen and (min-width: $screen-lg-min) {}
 
 /* Extra-extra-small view */
-@media screen and (max-width: $screen-xxs-max) {
-
-}
+@media screen and (max-width: $screen-xxs-max) {}
 
 /* Extra-small view */
-@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
-
-}
+@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {}
 
 /* Small view */
-@media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
-
-}
+@media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {}
 
 /* Medium view */
-@media screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) {
-
-}
+@media screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) {}
 
 /* Large view */
-@media screen and (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
-
-}
+@media screen and (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {}
 
 /* Extra-large view */
-@media screen and (min-width: $screen-xl-min) {
+@media screen and (min-width: $screen-xl-min) {}
 
-}
-
- /* Print view */
+/* Print view */
 @media print {
 	body {
 		font-size: 10pt !important;

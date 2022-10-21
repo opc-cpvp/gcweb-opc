@@ -1,4 +1,4 @@
-@import "../lib/GCWeb/src/variables";
+@import "../node_modules/GCWeb/src/variables";
 /*
  Global variables for opc_theme_2015
  */
@@ -49,8 +49,3 @@ $menu-colour: #555;
 $input-color-placeholder: #5c5c5c;
 
 $font-family-sans-serif: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-
-$font-size-base: rem-calc(16);
-
-
-
