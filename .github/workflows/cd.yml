@@ -1,0 +1,168 @@
+name: Continuous deployment
+
+on:
+  push:
+    branches:
+      - master
+      - reorg
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  deploy-gcweb:
+
+    runs-on: ubuntu-latest
+
+    environment: github-cd
+
+    strategy:
+      matrix:
+        node-version: [8.x]
+    env:
+      REPO_GCWEB: GCWeb-OPC
+      REPO_DIST: themes-dist
+      REPO_DIST_CDN: themes-cdn
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Extract tag or branch name
+        id: ref_name
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ secrets.my_token }}
+          result-encoding: string
+          # act use "\" and githbu use "/"
+          script: |
+            return context.ref.replace(/\/?refs\/heads\//, '').replace(/\\?refs\\heads\\/, '').replace(/\/?refs\/tags\//, '').replace(/\\?refs\\tags\\/, '')
+      - name: Check if it a tag
+        id: ref_tags
+        uses: actions/github-script@v3
+        with:
+          github-token: ${{ secrets.my_token }}
+          result-encoding: string
+          # act use "\" and githbu use "/"
+          script: |
+            return context.ref.startsWith("\\refs\\tags\\") || context.ref.startsWith("/refs/tags/") || context.ref.startsWith("refs/tags/") || context.ref.startsWith("refs\\tags\\") || ''
+      - name: Tag or branch info
+        env:
+           ref_name: ${{ steps.ref_name.outputs.result }}
+           is_tags: ${{ steps.ref_tags.outputs.result }}
+        run: |
+          echo Ref name: ${{ env.ref_name }}
+          echo Is tag: ${{ env.is_tags }}
+
+#      - name: Cache node modules
+#        uses: actions/cache@v2
+#        if: ${{ !env.ACT }}
+#        env:
+#          cache-name: cache-node-modules
+#        with:
+#          # npm cache files are stored in '~/.npm' on Linux/macOS
+#          path: ~/.npm
+#          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+#          restore-keys: |
+#            ${{ runner.os }}-build-${{ env.cache-name }}-
+#            ${{ runner.os }}-build-
+#            ${{ runner.os }}-
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: |
+          npm i -g bower grunt-cli
+          npm ci
+
+      - name: Build GCWeb-OPC
+        if: ${{ !env.ACT }}
+        run: grunt dist
+
+      - name: Git config
+        run: |
+          git config --global user.name "${{ secrets.my_username }}"
+          git config --global user.email "${{ secrets.my_email }}"
+
+      #
+      # GCWeb-OPC Dist
+      #
+      - name: Dist - Applying changes
+        run: |
+          git clone --depth 1 https://github.com/${{ github.repository_owner }}/${{ env.REPO_DIST }}.git --branch gcweb-opc ~gcweb-dist
+          rm -rf ~gcweb-dist/wet-boew
+          rm -rf ~gcweb-dist/gcweb-opc
+          mv dist/wet-boew ~gcweb-dist/wet-boew
+          mv dist/gcweb-opc ~gcweb-dist/gcweb-opc
+          cp Licence-fr.txt ~gcweb-dist/gcweb-opc/Licence-fr.txt
+          cp License-en.txt ~gcweb-dist/gcweb-opc/License-en.txt
+          cd ~gcweb-dist
+          git add .
+          git commit -m "CD ${{ github.run_id }}: Update GCWeb-OPC dist files" --allow-empty
+
+      - name: Dist - Deploy in GCWeb-OPC branch
+        uses: ad-m/github-push-action@master
+        with:
+          repository: ${{ github.repository_owner }}/${{ env.REPO_DIST }}
+          directory: ~gcweb-dist
+          branch: gcweb-opc
+          github_token: ${{ secrets.my_token }}
+
+      - name: Dist - Create release
+        if: ${{ env.is_tags != '' }}
+        uses: actions/github-script@v3
+        env:
+          commitish: gcweb-opc
+          repo: ${{ env.REPO_DIST }}
+          ref_name: ${{ steps.ref_name.outputs.result }}-gcweb-opc
+          is_tags: ${{ steps.ref_tags.outputs.result }}
+        with:
+          github-token: ${{ secrets.my_token }}
+          script: |
+            github.repos.createRelease({
+              owner: context.repo.owner,
+              repo: process.env.repo,
+              tag_name: process.env.ref_name,
+              name: 'Release ' + process.env.ref_name + ' (' + context.runId + ')',
+              target_commitish: process.env.commitish
+            });
+
+      #
+      # GCWeb-OPC Dist CDN
+      #
+      - name: Dist CDN - Applying changes
+        run: |
+          git clone --depth 1 https://github.com/${{ github.repository_owner }}/${{ env.REPO_DIST_CDN }}.git --branch gcweb-opc ~gcweb-cdn
+          rm -rf ~gcweb-cdn/*
+          cp -r ~gcweb-dist/gcweb-opc/. ~gcweb-cdn/
+          cd ~gcweb-cdn
+          git add .
+          git commit -m "CD ${{ github.run_id }}: Update GCWeb-OPC dist cdn files" --allow-empty
+
+      - name: Dist CDN - Deploy in GCWeb-OPC branch
+        uses: ad-m/github-push-action@master
+        with:
+          repository: ${{ github.repository_owner }}/${{ env.REPO_DIST_CDN }}
+          directory: ~gcweb-cdn
+          branch: gcweb-opc
+          github_token: ${{ secrets.my_token }}
+
+      - name: Dist CDN - Create release
+        uses: actions/github-script@v3
+        env:
+          commitish: gcweb-opc
+          repo: ${{ env.REPO_DIST_CDN }}
+          ref_name: ${{ steps.ref_name.outputs.result }}-gcweb-opc
+          is_tags: ${{ steps.ref_tags.outputs.result }}
+        if: ${{ env.is_tags != '' }}
+        with:
+          github-token: ${{ secrets.my_token }}
+          script: |
+            github.repos.createRelease({
+              owner: context.repo.owner,
+              repo: process.env.repo,
+              tag_name: process.env.ref_name,
+              name: 'Release ' + process.env.ref_name + ' (' + context.runId + ')',
+              target_commitish: process.env.commitish
+            });
