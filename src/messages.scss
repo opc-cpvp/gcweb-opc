@@ -1,6 +1,6 @@
 // Welcome page styles
 
-@import "../lib/GCWeb/src/messages";
+@import "../node_modules/GCWeb/src/messages";
 
 //Variables
 @import "variables";
@@ -18,6 +18,7 @@
 	.sp-bx {
 		border: 1px solid #ddd;
 	}
+
 	.sp-bx-bt {
 		background-color: $wbGray;
 		border: 1px solid #ddd;

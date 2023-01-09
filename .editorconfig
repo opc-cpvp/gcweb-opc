@@ -8,10 +8,16 @@ charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 indent_style = tab
+indent_size = 4
 
-[*.md]
-trim_trailing_whitespace = false
-
-[{*.json,*.yml}]
+[{.*,*.json,*.md,Gemfile.lock}]
 indent_style = space
 indent_size = 2
+
+# External font
+[!src/fonts/*.svg]
+charset = unset
+trim_trailing_whitespace = unset
+insert_final_newline = unset
+indent_style = unset
+indent_size = unset

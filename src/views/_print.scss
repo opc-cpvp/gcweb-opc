@@ -1,3 +1,14 @@
+a[href]:after {
+	content: " (" attr(href) ")";
+}
+
+// Don't show links that are fragment identifiers,
+// or use the `javascript:` pseudo protocol
+a[href^="#"]:after,
+a[href^="javascript:"]:after {
+	content: "";
+}
+
 #wb-bc {
 	.breadcrumb {
 		padding-top: 0;

@@ -1,4 +1,6 @@
 #global module:false
+path = require("path")
+
 module.exports = (grunt) ->
 
 	# Default task.
@@ -22,6 +24,7 @@ module.exports = (grunt) ->
 			#"htmllint"
 			#"bootlint"
 			"useMinAssets"
+			"sri"
 		]
 	)
 
@@ -46,19 +49,10 @@ module.exports = (grunt) ->
 			"copy:demos"
 			"copy:demos_min"
 			"copy:gcweb"
-			"copy:gcweb-assets"
+			"copy:gcweb_assets"
 			"assets"
 			"css"
 			"js"
-		]
-	)
-
-	@registerTask(
-		"init"
-		"Only needed when the repo is first cloned"
-		[
-			"install-dependencies"
-			"hub"
 		]
 	)
 
@@ -67,26 +61,6 @@ module.exports = (grunt) ->
 		"Build and deploy artifacts to wet-boew-dist"
 		->
 			if process.env.TRAVIS_PULL_REQUEST is "false" and process.env.DIST_REPO isnt `undefined` and ( process.env.TRAVIS_TAG isnt "" or process.env.TRAVIS_BRANCH is "master" )
-				pkgOriginal = grunt.file.readJSON("package.json");
-				addToRepo = "themes-cdn";
-				writeTo = "dist/gcweb-opc/package.json";
-				pkg = {
-					name: "gcweb-opc",
-					version: pkgOriginal.version,
-					description: pkgOriginal.name.toLowerCase() + " theme"
-					repository: {
-						type: "git",
-						url: "git+https://github.com/opc-cpvp/" + addToRepo + ".git"
-					},
-					author: "opc-buildbot",
-					license: "MIT",
-					bugs: {
-						url: "https://github.com/opc-cpvp/" + pkgOriginal.name.toLowerCase() + "/issues"
-					},
-					homepage: "https://github.com/opc-cpvp/" + addToRepo + "#readme"
-				};
-				grunt.file.write(writeTo, JSON.stringify(pkg, null, 2));
-
 				grunt.task.run [
 					"copy:deploy"
 					"gh-pages:travis"
@@ -123,18 +97,16 @@ module.exports = (grunt) ->
 		"server"
 		"Run the Connect web server for local repo"
 		[
-			"connect:server"
-			"watch"
-			]
+			"connect:server:keepalive"
+		]
 	)
 
 	@registerTask(
 		"css"
 		"INTERNAL: Compiles Sass and vendor prefixes the result"
 		[
-			"clean:css_min"
 			"sass"
-			"autoprefixer"
+			"postcss"
 			"usebanner:css"
 			"cssmin"
 			"cssmin_ie8_clean"
@@ -165,7 +137,9 @@ module.exports = (grunt) ->
 		"test"
 		"INTERNAL: Runs testing tasks except for SauceLabs testing"
 		[
+			"eslint"
 			"sasslint"
+			"lintspaces"
 		]
 	)
 
@@ -206,8 +180,10 @@ module.exports = (grunt) ->
 		# Metadata.
 		pkg: @file.readJSON "package.json"
 		themeDist: "dist/<%= pkg.name %>"
-		jqueryVersion: @file.readJSON "lib/jquery/bower.json"
-		jqueryOldIEVersion: @file.readJSON "lib/jquery-oldIE/bower.json"
+		jqueryVersion: grunt.file.readJSON(
+			path.join require.resolve( "jquery" ), "../../package.json"
+		).version
+		jqueryOldIEVersion: "1.12.4"
 		banner: "/*!\n * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)\n * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html\n" +
 				" * v<%= pkg.version %> - " + "<%= grunt.template.today('yyyy-mm-dd') %>\n *\n */"
 
@@ -235,7 +211,6 @@ module.exports = (grunt) ->
 
 		clean:
 			dist: [ "dist"]
-			lib: ["lib"]
 			deps: ["<%= themeDist %>/theme-js-deps"]
 			css: [
 				"<%= themeDist %>/css"
@@ -261,7 +236,7 @@ module.exports = (grunt) ->
 
 			test:
 				src: [
-					"lib/wet-boew/src/test.js"
+					"node_modules/wet-boew/src/test.js"
 					"src/**/test.js"
 				]
 				dest: "dist/unmin/test/tests.js"
@@ -269,32 +244,14 @@ module.exports = (grunt) ->
 		copy:
 			wetboew:
 				expand: true
-				cwd: "lib/GCWeb/lib/wet-boew/dist"
+				cwd: "node_modules/wet-boew/dist"
 				src: [
 					"wet-boew/**/*.*"
 				]
 				dest: "dist"
-			"gcweb":
-				expand: true
-				cwd: "lib/GCWeb/dist/"
-				src: [
-					"img/**/*.*"
-					# "**/ajax/**/*.*"
-				]
-				dest: "dist"
-			"gcweb-assets":
-				expand: true
-				cwd: "lib/GCWeb/dist/GCWeb/"
-				src: [
-					"assets/**/*.*"
-					"fonts/**/*.*"
-					"css/**/*.css"
-					"!css/**/*.min.css"
-				]
-				dest: "<%= themeDist %>"
 			#wetboew_demo:
 			#	expand: true
-			#	cwd: "lib/wet-boew/dist/unmin"
+			#	cwd: "node_modules/wet-boew/dist/unmin"
 			#	src: [
 			#		"demos/**/*.*"
 			#		"docs/**/*.*"
@@ -304,7 +261,7 @@ module.exports = (grunt) ->
 			#	dest: "dist/unmin"
 			#wetboew_demo_min:
 			#	expand: true
-			#	cwd: "lib/wet-boew/dist"
+			#	cwd: "node_modules/wet-boew/dist"
 			#	src: "<%= copy.wetboew_demo.src %>"
 			#	dest: "dist"
 			site:
@@ -326,10 +283,10 @@ module.exports = (grunt) ->
 			js_lib:
 				expand: true
 				flatten: true
-				cwd: "lib"
+				cwd: "node_modules"
 				src: [
-					"jsonpointer/src/jsonpointer.js"
-					"JSON-Patch/src/json-patch.js"
+					"jsonpointer.js/src/jsonpointer.js"
+					"fast-json-patch/src/json-patch.js"
 				]
 				dest: "<%= themeDist %>/theme-js-deps"
 			test:
@@ -444,6 +401,24 @@ module.exports = (grunt) ->
 						if filepath.match /\.css/
 							return content.replace /\.\.\/\.\.\/wet-boew\/(assets|fonts)/g, '../$1'
 						content
+			gcweb:
+				expand: true
+				cwd: "node_modules/GCWeb/dist/"
+				src: [
+					"img/**/*.*"
+					# "**/ajax/**/*.*"
+				]
+				dest: "dist"
+			gcweb_assets:
+				expand: true
+				cwd: "node_modules/GCWeb/dist/GCWeb/"
+				src: [
+					"assets/**/*.*"
+					"fonts/**/*.*"
+					"css/**/*.css"
+					"!css/**/*.min.css"
+				]
+				dest: "<%= themeDist %>"
 
 		sasslint:
 			options:
@@ -451,13 +426,54 @@ module.exports = (grunt) ->
 			all:
 				expand: true
 				src: [
-						"**/*.scss"
-						"!lib/**"
-						"!node_modules/**"
-						"!dist/**"
+						"src/**/*.scss"
 					]
 
+		lintspaces:
+			all:
+				src: [
+						# Root files
+						".editorconfig"
+						".git*"
+						".*rc"
+						".*.yml"
+						"Gemfile*"
+						"Gruntfile.coffee"
+						"Licen?e-*.txt"
+						"*.{json,md}"
+						"Rakefile"
+
+						# Folders
+						"script/**"
+						"site/**"
+						"src/**"
+
+						# Exemptions...
+
+						# Images
+						"!site/**/*.{jpg,png}"
+						"!src/assets/*.{ico,jpg,png}"
+
+						# External fonts
+						"!src/fonts/*.{eot,svg,ttf,woff}"
+
+						# Docker environment file
+						# File that gets created/populated in a manner that goes against .editorconfig settings during the main Travis-CI build.
+						"!script/docker/env"
+					],
+				options:
+					editorconfig: ".editorconfig",
+					ignores: [
+						"js-comments"
+					],
+					showCodes: true
+
 		sass:
+			options:
+				includePaths: [
+					"./node_modules"
+					"./node_modules/wet-boew/node_modules"
+				]
 			all:
 				expand: true
 				cwd: "src"
@@ -465,16 +481,17 @@ module.exports = (grunt) ->
 				dest: "<%= themeDist %>/css"
 				ext: ".css"
 
-		autoprefixer:
+		postcss:
 			options:
-				browsers: [
-					"last 2 versions"
-					"android >= 2.3"
-					"bb >= 7"
-					"ff >= 17"
-					"ie >= 8"
-					"ios 5"
-					"opera 12.1"
+				processors: [
+					require("autoprefixer")(
+						browsers: [
+							"last 2 versions"
+							"bb >= 10"
+							"Firefox ESR"
+							"ie > 10"
+						]
+					)
 				]
 			modern:
 				cwd: "<%= themeDist %>/css"
@@ -507,13 +524,19 @@ module.exports = (grunt) ->
 			theme:
 				expand: true
 				cwd: "<%= themeDist %>/css"
-				src: "*.css"
+				src: [
+					"*.css"
+					"!*.min.css"
+				]
 				ext: ".min.css"
 				dest: "<%= themeDist %>/css"
 			assets:
 				expand: true
 				cwd: "<%= themeDist %>/assets/css"
-				src: "*.css"
+				src: [
+					"*.css"
+					"!*.min.css"
+				]
 				ext: ".min.css"
 				dest: "<%= themeDist %>/assets/css"
 
@@ -523,21 +546,6 @@ module.exports = (grunt) ->
 				cwd: "<%= themeDist %>/css"
 				src: "**/ie8*.min.css"
 				dest: "<%= themeDist %>/css"
-
-		jshint:
-			options:
-				jshintrc: "lib/wet-boew/.jshintrc"
-
-			lib_test:
-				src: [
-					"src/**/*.js"
-				]
-
-		jscs:
-			all:
-				src: [
-					"src/**/*.js"
-				]
 
 		# Minify
 		uglify:
@@ -551,6 +559,7 @@ module.exports = (grunt) ->
 				cwd: "<%= themeDist %>"
 				src: [
 					"**/*.js"
+					"!**/*.min.js"
 					"!<%= themeDist %>/theme-js-deps"
 				]
 				dest: "<%= themeDist %>"
@@ -577,18 +586,18 @@ module.exports = (grunt) ->
 					sanitize: false
 				production: false
 				data: [
-					"lib/GCWeb/lib/wet-boew/site/data/**/*.{yml,json}"
-					"lib/GCWeb/site/data/**/*.{yml,json}"
+					"node_modules/wet-boew/site/data/**/*.{yml,json}"
+					"node_modules/GCWeb/site/data/**/*.{yml,json}"
 					"site/data/**/*.{yml,json}"
 				]
 				helpers: [
-					"lib/GCWeb/lib/wet-boew/site/helpers/helper{,s}-*.js"
-					"lib/GCWeb/site/helpers/helper{,s}-*.js"
+					"node_modules/wet-boew/site/helpers/helper{,s}-*.js"
+					"node_modules/GCWeb/site/helpers/helper{,s}-*.js"
 					"site/helpers/helper{,s}-*.js"
 				]
 				partials: [
-					"lib/GCWeb/lib/wet-boew/site/includes/**/*.hbs"
-					"lib/GCWeb/site/includes/**/*.hbs"
+					"node_modules/wet-boew/site/includes/**/*.hbs"
+					"node_modules/GCWeb/site/includes/**/*.hbs"
 					"site/includes/**/*.hbs"
 				]
 				layoutdir: "site/layouts"
@@ -600,7 +609,7 @@ module.exports = (grunt) ->
 
 			ajax:
 				options:
-					layoutdir: "lib/GCWeb/lib/wet-boew/site/layouts"
+					layoutdir: "node_modules/wet-boew/site/layouts"
 					layout: "ajax.hbs"
 
 				cwd: "site/pages/ajax"
@@ -638,7 +647,7 @@ module.exports = (grunt) ->
 					#,
 					#	#docs
 					#	expand: true
-					#	cwd: "lib/GCWeb/lib/wet-boew/site/pages/docs"
+					#	cwd: "node_modules/wet-boew/site/pages/docs"
 					#	src: [
 					#		"**/*.hbs"
 					#	]
@@ -646,26 +655,26 @@ module.exports = (grunt) ->
 					#,
 					#	#plugins
 					#	expand: true
-					#	cwd: "lib/GCWeb/lib/wet-boew/site/pages/demos"
+					#	cwd: "node_modules/wet-boew/site/pages/demos"
 					#	src: [
 					#		"**/*.hbs"
 					#	]
 					#	dest: "dist/unmin/demos"
 					#,
 					#	expand: true
-					#	cwd: "lib/GCWeb/lib/wet-boew/src/plugins"
+					#	cwd: "node_modules/wet-boew/src/plugins"
 					#	src: [
 					#		"**/*.hbs"
 					#	]
 					#	dest: "dist/unmin/demos"
 					#,
 					#	expand: true
-					#	cwd: "lib/GCWeb/lib/wet-boew/src/polyfills"
+					#	cwd: "node_modules/wet-boew/src/polyfills"
 					#	src: "**/*.hbs"
 					#	dest: "dist/unmin/demos"
 					#,
 					#	expand: true
-					#	cwd: "lib/GCWeb/lib/wet-boew/src/other"
+					#	cwd: "node_modules/wet-boew/src/other"
 					#	src: "**/*.hbs"
 					#	dest: "dist/unmin/demos"
 				]
@@ -728,6 +737,11 @@ module.exports = (grunt) ->
 						"The “details” element is not supported properly by browsers yet. It would probably be better to wait for implementations."
 						"The value of attribute “title” on element “a” from namespace “http://www.w3.org/1999/xhtml” is not in Unicode Normalization Form C." #required for vietnamese translations
 						"Text run is not in Unicode Normalization Form C." #required for vietnamese translations
+						"Discarding unrecognized token “none” from value of attribute “role”. Browsers ignore any token that is not a defined ARIA non-abstract role." # menu designed as per WAI-ARIA 1.1 practice
+						"Attribute “aria-expanded” not allowed on element “a” at this point." # menu designed as per WAI-ARIA 1.1 practice
+						"Attribute “aria-orientation” not allowed on element “ul” at this point." # menu designed as per WAI-ARIA 1.1 practicee
+						"An element with “role=menuitem” must be contained in, or owned by, an element with “role=menubar” or “role=menu”." # the menu item (li) in the AJAX fragment are not contained in a UL (menu)
+						"Element “li” not allowed as child of element “body” in this context. (Suppressing further errors from this subtree.)" # the menu item (li) in the AJAX fragment are not contained in a UL (menu)
 					]
 				src: [
 					"dist/unmin/ajax/**/*.html"
@@ -742,6 +756,8 @@ module.exports = (grunt) ->
 						"Element “dl” is missing a required instance of child element “dt”."
 						"XHTML element “dl” is missing a required instance of child element “dt”."
 						"Empty heading."
+						"Attribute “aria-orientation” not allowed on element “ul” at this point." # menu designed as per WAI-ARIA 1.1 practice
+						"Discarding unrecognized token “none” from value of attribute “role”. Browsers ignore any token that is not a defined ARIA non-abstract role." # menu designed as per WAI-ARIA 1.1 practice
 					]
 				src: [
 					"dist/unmin/demos/data-json/template-en.html"
@@ -758,6 +774,9 @@ module.exports = (grunt) ->
 						"Text run is not in Unicode Normalization Form C." #required for vietnamese translations
 						"The “longdesc” attribute on the “img” element is obsolete. Use a regular “a” element to link to the description."
 						/Bad value “\.\/\.\.\/[^”]*” for attribute “[^”]*” on XHTML element “[^”]*”: Path component contains a segment “\/\.\.\/” not at the beginning of a relative reference, or it contains a “\/\.\/”. These should be removed./
+						"Element “p” not allowed as child of element “figure” in this context. (Suppressing further errors from this subtree.)" # as per HTML 5.3 spec, figcaption just need to be a children of figure element
+						"Attribute “aria-orientation” not allowed on element “ul” at this point." # menu designed as per WAI-ARIA 1.1 practice
+						"Discarding unrecognized token “none” from value of attribute “role”. Browsers ignore any token that is not a defined ARIA non-abstract role." # menu designed as per WAI-ARIA 1.1 practice
 					]
 				src: [
 					"dist/unmin/**/*.html"
@@ -767,6 +786,8 @@ module.exports = (grunt) ->
 					"!dist/unmin/test/*.html"
 					"!dist/unmin/demos/data-json/template-en.html"
 					"!dist/unmin/demos/data-json/template-fr.html"
+					"!dist/unmin/gcweb-theme/test-case-1.html"
+					"!dist/unmin/home/test-1.html"
 				]
 
 		bootlint:
@@ -792,14 +813,19 @@ module.exports = (grunt) ->
 					# Ignore HTML fragments used for the menus
 					"!dist/**/assets/*.html"
 					"!dist/**/ajax/*.html"
+					# Ignore deprecated page as it is just for testing
+					"!dist/**/deprecated-*.html"
 				]
 
 		watch:
 			gruntfile:
 				files: "Gruntfile.coffee"
 				tasks: [
-					"dist"
+					"build"
 				]
+			js:
+				files: "<%= eslint.all.src %>"
+				tasks: "js"
 			sass:
 				files: "src/**/*.scss"
 				tasks: [
@@ -832,35 +858,18 @@ module.exports = (grunt) ->
 					"copy:assets"
 					"cssmin:assets"
 				]
-			lib_test:
-				files: "<%= jshint.lib_test.src %>"
-				tasks: [
-					"jshint:lib_test"
-				]
-			source:
-				files: "<%= jshint.lib_test.src %>"
-				tasks: [
-					"build"
-				]
 				options:
 					interval: 5007
 					livereload: true
 
-		hub:
-			"GCWeb":
-				src: [
-					"lib/GCWeb/Gruntfile.coffee"
-					"lib/GCWeb/lib/wet-boew/Gruntfile.coffee"
-				]
-				tasks: [
-					"dist"
-				]
-
-		"install-dependencies":
+		eslint:
 			options:
-				cwd: "lib/GCWeb"
-				failOnError: false
-				isDevelopment: true
+				configFile: if process.env.CI == "true" then "node_modules/wet-boew/.eslintrc.ci.json" else "node_modules/wet-boew/.eslintrc.json"
+				quiet: true
+			all:
+				src: [
+					"src/**/*.js"
+				]
 
 		connect:
 			options:
@@ -934,6 +943,18 @@ module.exports = (grunt) ->
 					repo: process.env.DEMOS_REPO
 					branch: process.env.DEMOS_BRANCH
 					message: "<%= distDeployMessage %>"
+
+		sri:
+			options:
+				pretty: true
+			theme:
+				options:
+					dest: "<%= themeDist %>/payload.json"
+				cwd: "<%= themeDist %>"
+				src: [
+					"{js,css}/*.{js,css}"
+				]
+				expand: true
 
 	require( "load-grunt-tasks" )( grunt )
 
