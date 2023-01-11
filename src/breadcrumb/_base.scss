@@ -3,7 +3,7 @@
  */
 #wb-bc {
 	background: #f5f5f5;
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 
 	.breadcrumb {
 		border-radius: 0;
@@ -11,11 +11,12 @@
 	}
 
 	li {
+
 		&:before,
 		&:after {
 			color: #000;
 			font-family: "Glyphicons Halflings";
-			font-size: 0.7em;
+			font-size: .7em;
 		}
 
 		&:before {

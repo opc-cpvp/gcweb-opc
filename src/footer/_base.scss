@@ -5,10 +5,12 @@
 #wb-info {
 
 	a {
-		font-size: initial;
 		color: $black;
+		font-size: initial;
 
-		&:hover, &:active, &:focus {
+		&:hover,
+		&:active,
+		&:focus {
 			color: $color-primary;
 		}
 
@@ -34,6 +36,7 @@
 			}
 		}
 	}
+
 	.ftr-urlt-lnk {
 		ul {
 
@@ -56,6 +59,7 @@
 			}
 		}
 	}
+
 	.tofpg {
 
 		a {
@@ -63,7 +67,7 @@
 			font-weight: bold;
 			vertical-align: middle;
 
-			span{
+			span {
 				margin-left: 0;
 			}
 
@@ -73,7 +77,9 @@
 			}
 
 
-			&:hover, &:active, &:focus {
+			&:hover,
+			&:active,
+			&:focus {
 				color: darken($color-primary, 10%);
 			}
 		}
@@ -81,21 +87,23 @@
 
 	nav {
 		padding-bottom: 1em;
-		padding-top: 0.75em;
+		padding-top: .75em;
 
 		[class*="col-"] {
 			h3 {
+				color: $black;
 				font-size: 1.10em;
 				font-weight: 700;
 				margin-top: 20px;
-				color: $black;
 			}
 		}
 
 		a {
 			color: $color-primary;
 
-			&:active, &:hover, &:focus {
+			&:active,
+			&:hover,
+			&:focus {
 				color: darken($color-primary, 10%);
 			}
 		}

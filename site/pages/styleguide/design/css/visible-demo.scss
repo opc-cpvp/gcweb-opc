@@ -1,4 +1,3 @@
-
 /* Responsive (scrollable) doc tables */
 .table-responsive {
 	.highlight {
@@ -45,7 +44,7 @@
 		}
 
 		&.is-hidden {
-			background-color: #f9f9f9 !important;		
+			background-color: #f9f9f9 !important;
 			color: #717171;
 		}
 	}
@@ -77,6 +76,7 @@
 
 .visible-on {
 	.col-xs-6 {
+
 		.hidden-xs,
 		.hidden-sm,
 		.hidden-md,
@@ -88,6 +88,7 @@
 
 .hidden-on {
 	.col-xs-6 {
+
 		.hidden-xs,
 		.hidden-sm,
 		.hidden-md,
@@ -105,6 +106,7 @@
 
 .visible-on {
 	.col-xs-6 {
+
 		.visible-xs,
 		.visible-sm,
 		.visible-md,
@@ -116,6 +118,7 @@
 
 .hidden-on {
 	.col-xs-6 {
+
 		.visible-xs,
 		.visible-sm,
 		.visible-md,

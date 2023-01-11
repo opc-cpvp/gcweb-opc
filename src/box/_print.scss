@@ -1,11 +1,13 @@
-.box{
-	&.toc{
-		padding: 0;
+.box {
+	&.toc {
 		border: none;
-		h2{
+		padding: 0;
+
+		h2 {
 			border-bottom: none;
 		}
-		a:after{
+
+		a:after {
 			display: none !important;
 		}
 	}

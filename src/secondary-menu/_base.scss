@@ -16,48 +16,52 @@
 		margin: 0;
 
 		a {
-            display: inline;
-            display: initial;
-            margin: 0;
-            margin: initial;
-            padding: 0;
-            padding: initial;
-            &:hover{
-                background-color: inherit;
-                color: inherit;
-                background-color: initial;
-                color: initial;
-            }
+			display: inline;
+			display: initial;
+			margin: 0;
+			margin: initial;
+			padding: 0;
+			padding: initial;
+
+			&:hover {
+				background-color: inherit;
+				color: inherit;
+				background-color: initial;
+				color: initial;
+			}
 		}
 	}
 
 	.list-group {
 		margin-bottom: 0;
-        margin-left: 0;
-        margin-left: initial;
+		margin-left: 0;
+		margin-left: initial;
+
 		a {
 			&.list-group-item {
 
 				&.wb-navcurr {
-                    @extend %secmenu-canada-theme-menuitem-curr-hover-focus;
-                    cursor: auto;
-                    cursor: initial;
+					@extend %secmenu-canada-theme-menuitem-curr-hover-focus;
+					cursor: auto;
+					cursor: initial;
 				}
 
 				&[href] {
+
 					&:hover,
 					&:focus {
 						@extend %secmenu-canada-theme-menuitem-curr-hover-focus;
 					}
-                }
-                
+				}
+
 				&[href] {
+
 					&:hover,
 					&:focus {
-                        background-color: inherit;
-                        color: inherit;
-                        background-color: initial;
-                        color: initial;
+						background-color: inherit;
+						color: inherit;
+						background-color: initial;
+						color: initial;
 					}
 				}
 			}
@@ -72,4 +76,3 @@
 		}
 	}
 }
-

@@ -16,13 +16,13 @@
 
 		> {
 			li {
+				border: none;
 				display: table-cell;
 				float: none;
-                border: none;
 
 				&:last-child {
-                    border-right: none;
-                }
+					border-right: none;
+				}
 
 				a {
 					color: #fff;
@@ -38,6 +38,7 @@
 
 	// Menu Items ( ul in li's in this case)
 	.sm {
+
 		// open state
 		&.open {
 			border-bottom: 5px solid $black;
@@ -56,8 +57,8 @@
 	.modal-header {
 		background: $black;
 		border-bottom: 1px solid $black;
-        padding: 0;
-        padding: initial;
+		padding: 0;
+		padding: initial;
 		position: relative;
 
 		&:before {
@@ -69,22 +70,25 @@
 
 	.modal-body {
 		background: $gray-darker;
-		li{
+
+		li {
 			color: white;
 		}
-		span{
-			+ a{
+
+		span {
+			+a {
 				display: inline;
 			}
 		}
 	}
 
-	.modal-footer{
-		margin-top: -48px;
+	.modal-footer {
 		background: $gray-darker;
-		.overlay-close{
-			color: $gray-darker;
+		margin-top: -48px;
+
+		.overlay-close {
 			background: $btn-default-bg;
+			color: $gray-darker;
 		}
 	}
 
@@ -117,8 +121,8 @@
 
 	.sec-pnl {
 		background: #cdd4da !important;
+		display: block !important;
 		padding-left: 15px;
-        display: block !important;
 	}
 }
 
@@ -126,8 +130,8 @@
 	#wb-sm {
 		.menu {
 			> {
-                border-right: none;
-            }
+				border-right: none;
+			}
 		}
 	}
 

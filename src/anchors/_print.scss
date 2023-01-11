@@ -1,9 +1,9 @@
 body a {
 	text-decoration: underline !important;
 
-    &:after {
-        text-decoration: none !important;
-        display: inline-block !important;
-        margin-left: 0.25em !important;
-    }
+	&:after {
+		display: inline-block !important;
+		margin-left: .25em !important;
+		text-decoration: none !important;
+	}
 }

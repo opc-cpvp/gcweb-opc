@@ -4,9 +4,9 @@
 // For Firefox
 main {
 
-    > .row {
-        > [class^="col-md-"] {
-            width: 100%;
-        }
-    }
+	>.row {
+		>[class^="col-md-"] {
+			width: 100%;
+		}
+	}
 }

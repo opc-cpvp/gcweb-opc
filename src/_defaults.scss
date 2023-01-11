@@ -3,12 +3,12 @@
 */
 @media screen {
 	body {
-		font-family: $font-family-sans-serif;
-		font-weight: 400;
 		background: url(../assets/opc-circles-pnk.svg) no-repeat left -950px top -400px,
 			url(../assets/opc-circles-pnk.svg) no-repeat right -900px top -600px !important;
 		background-color: $color-bg !important;
 		background-size: 1135px 1469px !important;
+		font-family: $font-family-sans-serif;
+		font-weight: 400;
 	}
 
 	a {

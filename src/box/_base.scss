@@ -1,11 +1,11 @@
 .box {
-	padding: $padding-large-horizontal;
 	background-color: $gray-lightest;
 	margin-bottom: $padding-large-vertical;
+	padding: $padding-large-horizontal;
 
-	> h1,
-	> h2,
-	> h3 {
+	>h1,
+	>h2,
+	>h3 {
 		margin-top: 0;
 	}
 
@@ -17,14 +17,35 @@
 		&.box-opc-highlight {
 			background-color: $color-highlight;
 
-			.h1, .h2, .h3, .h4, .h5, .h6,
-			h1, h2, h3, h4, h5, h6 {
-				border-bottom-color: transparentize($white, 0.5);
+			.h1,
+			.h2,
+			.h3,
+			.h4,
+			.h5,
+			.h6,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6 {
+				border-bottom-color: transparentize($white, .5);
 			}
 
-			p, a,
-			.h1, .h2, .h3, .h4, .h5, .h6,
-			h1, h2, h3, h4, h5, h6,
+			p,
+			a,
+			.h1,
+			.h2,
+			.h3,
+			.h4,
+			.h5,
+			.h6,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
 			label,
 			details summary {
 				color: $white;
@@ -33,7 +54,9 @@
 			a {
 				text-decoration: none;
 
-				&:hover, &:focus, &:active {
+				&:hover,
+				&:focus,
+				&:active {
 					color: darken($white, 20%);
 				}
 			}
@@ -47,15 +70,17 @@
 						display: block;
 						padding: $padding-large-vertical 0;
 
-						&:hover, &:active, &:focus {
-							background-color: fade-out($black, 0.8);
+						&:hover,
+						&:active,
+						&:focus {
+							background-color: fade-out($black, .8);
 						}
 					}
 
 					span.fa {
 						font-size: 1.5em;
-						width: 20%;
 						text-align: center;
+						width: 20%;
 					}
 				}
 			}

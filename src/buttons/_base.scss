@@ -1,34 +1,40 @@
 main {
-    .btn-primary {
-        background-color: $color-primary;
-        border-color: $color-primary;
+	.btn-primary {
+		background-color: $color-primary;
+		border-color: $color-primary;
 
-        &:hover {
-            background-color: darken($color-primary, 10%);
-        }
-    }
-    .btn-default {
-        color: $color-primary;
+		&:hover {
+			background-color: darken($color-primary, 10%);
+		}
+	}
 
-        &:visited {
-            color: $color-primary;
-        }
-    }
-    .btn-highlight {
-        color: $white;
-        background-color: $color-highlight;
+	.btn-default {
+		color: $color-primary;
 
-        &:hover, &:active, &:focus {
-            background-color: darken($color-highlight, 15%);
-        }
+		&:visited {
+			color: $color-primary;
+		}
+	}
 
-        &.inverse {
-            color: $color-highlight;
-            background-color: $white;
+	.btn-highlight {
+		background-color: $color-highlight;
+		color: $white;
 
-            &:hover, &:active, &:focus {
-                background-color: darken($white, 15%);
-            }
-        }
-    }
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: darken($color-highlight, 15%);
+		}
+
+		&.inverse {
+			background-color: $white;
+			color: $color-highlight;
+
+			&:hover,
+			&:active,
+			&:focus {
+				background-color: darken($white, 15%);
+			}
+		}
+	}
 }

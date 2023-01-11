@@ -2,9 +2,9 @@
  * Main content area
  */
 main {
+	background-color: transparentize($color-bg, .2);
 	margin-top: 0;
 	position: relative;
-	background-color: transparentize($color-bg, 0.2);
 
 	.pagetag,
 	.subtitle {
@@ -25,8 +25,18 @@ main {
 		}
 	}
 
-	h1, h2, h3, h4, h5, h6,
-	.h1, .h2, .h3, .h4, .h5, .h6 {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	.h1,
+	.h2,
+	.h3,
+	.h4,
+	.h5,
+	.h6 {
 		color: $color-highlight;
 		font-weight: 500;
 	}
