@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x]
+        node-version: [6.x]
     env:
       REPO_GCWEB: GCWeb-OPC
       REPO_DIST: themes-dist
