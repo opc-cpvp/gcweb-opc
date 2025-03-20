@@ -2,12 +2,19 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "extensions": [
-    "editorconfig.editorconfig"
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "editorconfig.editorconfig"
+      ]
+    }
+  },
+  "forwardPorts": [
+	8000
   ],
-  "forwardPorts": [8000],
   "mounts": [
     "source=gcweb-opc-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume",
     "source=gcweb-opc-lib,target=${containerWorkspaceFolder}/lib,type=volume"
-  ]
+  ],
+  "remoteUser": "node"
 }
