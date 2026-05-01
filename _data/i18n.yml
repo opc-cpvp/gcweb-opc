@@ -1,0 +1,33 @@
+# Groupe de pages
+page_group:
+  en:
+    examples: Examples
+    docs: Documentation
+    related: Related documents
+    impl-ref: Implementation reference
+    spec: Specification
+    test: Tests pages
+    reports: Reports
+    other: Other
+  fr:
+    examples: Exemples
+    docs: Documentations
+    related: Documents relié
+    test: Pages d'essaie
+    impl-ref: Référence d'implémentation
+    spec: Spécification
+    reports: Rapports
+    other: Autre
+
+# Status de component
+component_status:
+  en:
+    provisional: Provisional
+    stable: Stable
+    deprecated: Deprecated
+    demoted: Demoted
+  fr:
+    provisional: Provisionnel
+    stable: Stable
+    deprecated: Obsolète
+    demoted: Rétrogradé

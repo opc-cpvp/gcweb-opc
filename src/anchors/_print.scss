@@ -1,9 +1,0 @@
-body a {
-	text-decoration: underline !important;
-
-	&:after {
-		display: inline-block !important;
-		margin-left: .25em !important;
-		text-decoration: none !important;
-	}
-}

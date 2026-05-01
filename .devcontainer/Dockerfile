@@ -1,51 +1,122 @@
-FROM node:6
+FROM node:20
 
-# Retrieve root certificate
-RUN echo | \
-	openssl s_client -showcerts -connect www.google.com:443 2>&1 | \
-	tac | \
-	sed -ne '/-END CERTIFICATE-/,${p;/-BEGIN CERTIFICATE-/q}' | \
-	tac > /usr/local/share/ca-certificates/root-ca.crt
+COPY certs/ca-certificates.crt /usr/local/share/ca-certificates/ca-certificates.crt
 
-# Append the root certificate to ca-certificates.crt
-RUN cat /usr/local/share/ca-certificates/root-ca.crt >> /etc/ssl/certs/ca-certificates.crt
+# Make Node, OpenSSL, and npm trust the corporate CA bundle
+ENV NODE_EXTRA_CA_CERTS=/usr/local/share/ca-certificates/ca-certificates.crt
+	# NPM_CONFIG_CAFILE=/usr/local/share/ca-certificates/ca-certificates.crt
 
-# Set NODE_EXTRA_CA_CERTS to ca-certificates.crt
-ENV NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
-
-# Install additional tools
-RUN npm install -g \
-	grunt-cli@1.3.2 \
-	bower@1.8.12 \
+RUN update-ca-certificates \
+	# && npm config set cafile /usr/local/share/ca-certificates/corporate-ca.crt \
+	&& npm install -g \
+		grunt-cli \
+		bower \
 	&& npm cache clean --force
 
-RUN echo 'deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main' > /etc/apt/sources.list.d/jessie-backports.list
-RUN echo 'deb [check-valid-until=no] http://archive.debian.org/debian stretch main' > /etc/apt/sources.list.d/stretch.list
 
-# Default to UTF-8 file.encoding
+	# skip installing gem documentation with `gem install`/`gem update`
+RUN set -eux; \
+	mkdir -p /usr/local/etc; \
+	echo 'gem: --no-document' >> /usr/local/etc/gemrc
+
 ENV LANG C.UTF-8
 
-ENV JAVA_DEBIAN_VERSION 8u171-b11-1~bpo8+1
+# https://www.ruby-lang.org/en/news/2026/03/26/ruby-3-3-11-released/
+ENV RUBY_VERSION 3.3.11
+ENV RUBY_DOWNLOAD_URL https://cache.ruby-lang.org/pub/ruby/3.3/ruby-3.3.11.tar.xz
+ENV RUBY_DOWNLOAD_SHA256 9116bb2e313203bd78cd3e8dc09284d34b2645f725877623a7185bf3807c8ca3
 
-# see https://bugs.debian.org/775775
-# and https://github.com/docker-library/java/issues/19#issuecomment-70546872
-ENV CA_CERTIFICATES_JAVA_VERSION 20161107~bpo8+1
-
-RUN apt-get update; \
-	apt-get install -y --allow-unauthenticated \
-	openjdk-8-jre-headless="$JAVA_DEBIAN_VERSION" \
-	ca-certificates-java="$CA_CERTIFICATES_JAVA_VERSION" \
+# some of ruby's build scripts are written in ruby
+#   we purge system ruby later to make sure our final image uses what we just built
+RUN set -eux; \
+	\
+	savedAptMark="$(apt-mark showmanual)"; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends \
+		dpkg-dev \
+		libgdbm-dev \
+		ruby \
 	; \
-	rm -rf /var/lib/apt/lists/*;
+	\
+	rustArch=; \
+	dpkgArch="$(dpkg --print-architecture)"; \
+	case "$dpkgArch" in \
+		'amd64') rustArch='x86_64-unknown-linux-gnu'; rustupUrl='https://static.rust-lang.org/rustup/archive/1.28.2/x86_64-unknown-linux-gnu/rustup-init'; rustupSha256='20a06e644b0d9bd2fbdbfd52d42540bdde820ea7df86e92e533c073da0cdd43c' ;; \
+		'arm64') rustArch='aarch64-unknown-linux-gnu'; rustupUrl='https://static.rust-lang.org/rustup/archive/1.28.2/aarch64-unknown-linux-gnu/rustup-init'; rustupSha256='e3853c5a252fca15252d07cb23a1bdd9377a8c6f3efa01531109281ae47f841c' ;; \
+	esac; \
+	\
+	if [ -n "$rustArch" ]; then \
+		mkdir -p /tmp/rust; \
+		\
+		wget -O /tmp/rust/rustup-init "$rustupUrl"; \
+		echo "$rustupSha256 */tmp/rust/rustup-init" | sha256sum --check --strict; \
+		chmod +x /tmp/rust/rustup-init; \
+		\
+		export RUSTUP_HOME='/tmp/rust/rustup' CARGO_HOME='/tmp/rust/cargo'; \
+		export PATH="$CARGO_HOME/bin:$PATH"; \
+		/tmp/rust/rustup-init -y --no-modify-path --profile minimal --default-toolchain '1.91.1' --default-host "$rustArch"; \
+		\
+		rustc --version; \
+		cargo --version; \
+	fi; \
+	\
+	wget -O ruby.tar.xz "$RUBY_DOWNLOAD_URL"; \
+	echo "$RUBY_DOWNLOAD_SHA256 *ruby.tar.xz" | sha256sum --check --strict; \
+	\
+	mkdir -p /usr/src/ruby; \
+	tar -xJf ruby.tar.xz -C /usr/src/ruby --strip-components=1; \
+	rm ruby.tar.xz; \
+	\
+	cd /usr/src/ruby; \
+	\
+	autoconf; \
+	gnuArch="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)"; \
+	./configure \
+		--build="$gnuArch" \
+		--disable-install-doc \
+		--enable-shared \
+		${rustArch:+--enable-yjit} \
+	; \
+	make -j "$(nproc)"; \
+	make install; \
+	\
+	rm -rf /tmp/rust; \
+	apt-mark auto '.*' > /dev/null; \
+	apt-mark manual $savedAptMark > /dev/null; \
+	find /usr/local -type f -executable -not \( -name '*tkinter*' \) -exec ldd '{}' ';' \
+		| awk '/=>/ { so = $(NF-1); if (index(so, "/usr/local/") == 1) { next }; gsub("^/(usr/)?", "", so); printf "*%s\n", so }' \
+		| sort -u \
+		| xargs -r dpkg-query --search \
+# https://manpages.debian.org/bookworm/dpkg/dpkg-query.1.en.html#S (we ignore diversions and it'll be really unusual for more than one package to provide any given .so file)
+		| awk 'sub(":$", "", $1) { print $1 }' \
+		| sort -u \
+		| xargs -r apt-mark manual \
+	; \
+	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+	rm -rf /var/lib/apt/lists/*; \
+	\
+	cd /; \
+	rm -r /usr/src/ruby; \
+# verify we have no "ruby" packages installed
+	if dpkg -l | grep -i ruby; then exit 1; fi; \
+	[ "$(command -v ruby)" = '/usr/local/bin/ruby' ]; \
+# rough smoke test
+	ruby --version; \
+	gem --version; \
+	bundle --version
 
-# see CA_CERTIFICATES_JAVA_VERSION notes above
-RUN /var/lib/dpkg/info/ca-certificates-java.postinst configure
+# don't create ".bundle" in all our apps
+ENV GEM_HOME /usr/local/bundle
+ENV BUNDLE_SILENCE_ROOT_WARNING=1 \
+	BUNDLE_APP_CONFIG="$GEM_HOME"
+ENV PATH $GEM_HOME/bin:$PATH
+RUN set -eux; \
+	mkdir "$GEM_HOME"; \
+# adjust permissions of GEM_HOME for running "gem install" as an arbitrary user
+	chmod 1777 "$GEM_HOME"
 
-# Set the working directory to our workspace
-WORKDIR /workspaces/gcweb-opc
+USER node
 
-# Create the node_modules directory and set the owner to the node user
-RUN mkdir node_modules && chown -R node:node node_modules
+WORKDIR /home/node/app
 
-# Create the lib directory and set the owner to the node user
-RUN mkdir lib && chown -R node:node lib
+RUN mkdir node_modules

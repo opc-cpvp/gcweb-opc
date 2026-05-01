@@ -1,34 +1,67 @@
-# Centre Block
+![Statut du déploiement continu](https://github.com/wet-boew/GCWeb/workflows/Continuous%20deployment/badge.svg) [![Statut de devDependency](https://david-dm.org/wet-boew/GCWeb/dev-status.png?theme=shields.io)](https://david-dm.org/wet-boew/GCWeb#info=devDependencies) [![Pacte du contributeur](https://img.shields.io/badge/Pacte%20du%20contributeur-v1.4%20adopt%E9-ff69b4.svg)](CODE-OF-CONDUCT.md) [![Slack](https://img.shields.io/badge/Slack-Espace%20de%20travaill%20du%20systemes%20de%20conception%20GC-yellow?style=flat&logo=slack)](https://join.slack.com/t/design-gc-conception/shared_invite/enQtODE1OTc5Mzg5NzQ4LWQ3MjZjMTdjMjk2ZTZmMTJjYWQ3ZmRiNDYwYjRmN2NjYzQyNjFlNDBlY2FkNWE1ODg2YjExY2QwZmVjN2MwMGM)
 
-## Global Dependencies
+([English](#gcweb---canadaca-theme))
 
-- NodeJS v4.8.0 to v8.12.0
-- Latest Java version
+# GCWeb - Thème de Canada.ca
 
-To install global node dependencies run:
-```
-$ npm install -g bower grunt-cli
-``` 
-To install winodws build tools
-```
-$ npm install --global --production windows-build-tools
-``` 
+[Aller vers le site officiel de cette référence d'implémentation du thème de Canada.ca (GCWeb)](https://wet-boew.github.io/GCWeb/)
 
-## Local Development
+## Objectif
 
-1. Install local dependencies: `$ npm install`
+Le but de ce dépôt est de permettre à la communauté de développeurs d'utiliser, examiner et expérimenter de nouvelles composantes, mises en page, gabarits et fonctionnalités pour créer des produits numériques. Utilisez ce thèmes pour offrir aux personnes qui accèdent aux services numériques du gouvernement du Canada une expérience en ligne plus conviviale, cohérente et fiable.
 
-1. On your initial setup run: `$ grunt init` and grab a coffee... This is probably going to take awhile.
+Commencez avec des modèles, des configurations de conception et des principes de conception testés par les utilisateurs pour débuter rapidement et gagner du temps et économiser de l'argent.
 
-1. Run `grunt dist` to build the site
+- Comment ça marche? (à venir)
+- Qui utilisera ce projet? (à venir)
+- Quel est le but de ce projet? (à venir)
 
-1. Start a local server and watcher with: `$ grunt server`
+## Comment contribuer
 
-1. Make changes... Wait forever for assembler.
+Voir [CONTRIBUTING.md](CONTRIBUTING.md)
 
-## Distribution
+## Comment compiler et exécuter les tests
 
-To build a dist run:
-```
-$ grunt dist
-```
+Avec Docker `docker build -t gcweb . -p`
+
+Cette commande va compiler GCWeb et exécuté l'ensemble des test. Une fois complété, vous devrez voir que le conteneur Docker écoute sur l'adresse 0.0.0.0:8000 mais cela ne fonctionne exactement pas comme prévu. Pour re-compiler, vous devriez l'arrêter et le relancer.
+
+## Licence
+
+Sauf indication contraire, le code source de ce projet est protégé par le droit d'auteur de la Couronne du gouvernement du Canada et distribué sous la [licence MIT](LICENSE).
+
+Le mot-symbole « Canada » et les éléments graphiques connexes liés à cette distribution sont protégés en vertu des lois portant sur les marques de commerce et le droit d'auteur. Aucune autorisation n'est accordée pour leur utilisation à l'extérieur des paramètres du programme de coordination de l'image de marque du gouvernement du Canada. Pour obtenir davantage de renseignements à ce sujet, veuillez consulter les [Exigences pour l'image de marque](https://www.canada.ca/fr/secretariat-conseil-tresor/sujets/communications-gouvernementales/exigences-image-marque.html).
+
+______________________
+![Continuous deployment status](https://github.com/wet-boew/GCWeb/workflows/Continuous%20deployment/badge.svg) [![devDependency Status](https://david-dm.org/wet-boew/GCWeb/dev-status.png?theme=shields.io)](https://david-dm.org/wet-boew/GCWeb#info=devDependencies) [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md)
+[![Slack](https://img.shields.io/badge/Slack-GC%20Design%20System%20workspace-yellow?style=flat&logo=slack)](https://join.slack.com/t/design-gc-conception/shared_invite/enQtODE1OTc5Mzg5NzQ4LWQ3MjZjMTdjMjk2ZTZmMTJjYWQ3ZmRiNDYwYjRmN2NjYzQyNjFlNDBlY2FkNWE1ODg2YjExY2QwZmVjN2MwMGM)
+
+([Français](#gcweb---thème-de-canadaca))
+
+# GCWeb - Canada.ca theme
+
+[Navigate to the official Canada.ca reference implementation theme (GCWeb)](https://wet-boew.github.io/GCWeb/)
+
+## Purpose
+
+The purpose of this repository is to allow the developer community to use, test and experiment with new components, layouts, templates and features for building digital products under the Canada.ca brand. Use this theme to provide a more usable, consistent and trustworthy online experience for people who access Government of Canada digital services. Start with user-tested templates, patterns and design principles to get going quickly and help save time and money.
+
+- How does it work? (coming...)
+- Who will use this project? (coming...)
+- What is the goal of this project? (coming...)
+
+## How to Contribute
+
+See [CONTRIBUTING.md](CONTRIBUTING.md)
+
+## How to compile and run the tests
+
+With Docker `docker build -t gcweb . -p`
+
+This command will compile GCWeb and run all the tests. Once completed, you should see that the Docker container is listening on the address 0.0.0.0:8000, but it doesn't work exactly as expected. To recompile, you should stop it and restart it.
+
+## License
+
+Unless otherwise noted, the source code of this project is covered under Crown Copyright, Government of Canada, and is distributed under the [MIT License](LICENSE).
+
+The Canada wordmark and related graphics associated with this distribution are protected under trademark law and copyright law. No permission is granted to use them outside the parameters of the Government of Canada's corporate identity program. For more information, see [Federal identity requirements](https://www.canada.ca/en/treasury-board-secretariat/topics/government-communications/federal-identity-requirements.html).

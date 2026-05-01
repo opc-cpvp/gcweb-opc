@@ -1,13 +1,14 @@
-nbproject/*
-.sass-cache/
-.c9revisions/*
-.DS_Store
-.idea/
-_notes/
-.project
-*.sublime-project
-*.sublime-workspace
-sftp.json
+# Artifacts
+node_modules/
+lib/
+dist/
+?sprite*.*css
+sprite*.png
+
+# gh-pages
+wet-boew-cdn/
+wet-boew-theme-cdn/
+wet-boew-dist/
 
 # OS generated files #
 .DS_Store
@@ -17,17 +18,6 @@ sftp.json
 .Trashes
 ethumbs.db
 Thumbs.db
-/.project
-jshint.out.xml
-csslint.out.xml
-*.orig
-*.tmp
-*.log
-node_modules/
-lib/
-dist/
-themes-dist/
-themes-cdn/
 
 # IDEs
 nbproject/*
@@ -39,3 +29,44 @@ nbproject/*
 /.project
 .settings
 .vscode/*
+.vscode-server/
+.vscode-remote/
+
+# Logs
+.sass-cache/
+jshint.out.xml
+csslint.out.xml
+*.orig
+*.tmp
+*.log
+
+# To prevent docker build issue
+Gemfile.lock
+
+# Jekyll generated files
+# --------
+# Uncomment when we are able to deploy the jekyll template
+# --------
+#_layouts/
+#_includes/
+
+méli-mélo-demos/
+_wetboew-demos/
+_site/
+~jekyll-dist/
+
+.secrets
+.env
+.jekyll-metadata
+
+~gcweb-cdn/
+~wet-boew-cdn/
+~gcweb-jekyll/
+~gcweb-compiled-demos/
+~gcweb-dist/
+~gcweb-cdn/
+~gcweb-dist-submodule/
+~sites/
+
+# Docker
+.devcontainer/certs/

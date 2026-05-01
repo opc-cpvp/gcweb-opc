@@ -1,0 +1,115 @@
+#
+# Local site settings
+remote_theme: wet-boew/gcweb-jekyll
+repository: opc-cpvp/gcweb-opc
+title: "GCWeb, the Canada.ca official theme" # Site name or title
+website: "https://opc-cpvp.github.io/gcweb-opc/" # URL of your public facing website
+global:
+  lang: fr
+  feedbackPath:
+    en: "https://www.canada.ca/etc/designs/canada/wet-boew/assets/feedback/page-feedback-en.html"
+    fr: "https://www.canada.ca/etc/designs/canada/wet-boew/assets/feedback/page-feedback-fr.html"
+  sitemenuPath:
+    en: "https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-en.html"
+    fr: "https://www.canada.ca/content/dam/canada/sitemenu/sitemenu-v2-fr.html"
+  # contextualFooter: # Contextual footer settings
+  #   title:
+  #     fr: "Référence d'implémentation de Canada.ca"
+  #     en: "Canada.ca reference implementation"
+  #   links: # List of links visible in the support footer
+  #     fr:
+  #       - url: "https://wet-boew.github.io/GCWeb/index-fr.html#composantes"
+  #         text: "Composantes"
+  #       - url: "https://wet-boew.github.io/GCWeb/index-fr.html#gabarits"
+  #         text: "Gabarits"
+  #       - url: "https://wet-boew.github.io/GCWeb/index-fr.html#sitesglobal"
+  #         text: "Fonctionnalités globales et de sites"
+  #     en:
+  #       - url: "https://wet-boew.github.io/GCWeb/index-en.html#components"
+  #         text: "Components"
+  #       - url: "https://wet-boew.github.io/GCWeb/index-en.html#templates"
+  #         text: "Templates"
+  #       - url: "https://wet-boew.github.io/GCWeb/index-en.html#sitesglobal"
+  #         text: "Sites and global functionality"
+  termsUrl:
+    en: "https://www.canada.ca/en/transparency/terms.html"
+    fr: "https://www.canada.ca/fr/transparence/avis.html"
+  privacyUrl:
+    en: "https://www.canada.ca/en/transparency/privacy.html"
+    fr: "https://www.canada.ca/fr/transparence/confidentialite.html"
+  breadcrumbs:
+    en:
+      - link: "index-en.html"
+        title: "GCWeb"
+    fr:
+      - link: "index-fr.html"
+        title: "GCWeb"
+  applicationName:
+    en: "My application"
+    fr: "Mon application"
+  applicationURL:
+    en: "#"
+    fr: "#"
+# Include GCDS component libraries, excluding its CSS utilities
+# - (default) unspecified: GCDS librarires are not going to be load
+# - true: Will use the latest GCDS libraries
+# - String: The value must represent a specific GCDS version number, when specified it will use that version number
+#  gcds: "0.33.0"
+
+#
+# Override include to use
+# includes:
+#   footer: v2
+
+#
+# Page front matter defaults
+defaults:
+  - scope:
+      path: "" # Ensure it's applied to all pages
+    values:
+      layout: default
+
+#
+# Collections
+collections:
+  wetboew-demos:
+    output: true
+#    permalink: /wet-boew-demos/:name
+
+#
+# Jekyll settings
+timezone: America/Toronto # Timezone for blog posts and alike
+#verbose: true
+#quiet: false
+sass:
+  sass_dir: "sites"
+#  load_paths: [
+#    "node_modules" # we might only need bootstrap scss
+#  ,
+#    "node_modules/wet-boew/node_modules" # todo: find a way to include it.
+#  ]
+
+plugins:
+- jekyll-redirect-from
+
+#
+# Files excluded from Jekyll builds
+exclude:
+- README.md
+- CODE_OF_CONDUCT.md
+- CONTRIBUTING.md
+- LICENSE*
+- SECURITY.md
+- Gruntfile.coffee
+- CNAME
+- "*.tmp"
+- Gemfile
+- Gemfile.lock
+- gcweb-jekyll.gemspec
+- .jekyll-cache
+- node_modules
+- vendor/bundle/
+- vendor/cache/
+- vendor/gems/
+- vendor/ruby/
+- ~sites/

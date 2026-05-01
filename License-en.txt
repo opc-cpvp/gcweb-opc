@@ -1,1 +1,1 @@
-See https://github.com/opc-cpvp/gcweb-opc/blob/master/LICENSE
+See https://github.com/wet-boew/GCWeb/blob/master/LICENSE

@@ -1,0 +1,462 @@
+@charset "utf-8";
+
+/*
+ *
+ * Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW)
+ * wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html
+ *
+ */
+
+
+/*! Global and helpers */
+@import "variables";
+@import "wet-boew/src/variables";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "wet-boew/src/base/bootstrap-overrides/helper-variables";
+@import "wet-boew/src/base/helper-mixins";
+@import "wet-boew/src/base/proximity/helper-mixins";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+@import "gcweb/sites/baseline/mixins";
+@import "wet-boew/src/base/helper-placeholders";
+
+/*! Reset and dependencies */
+@import "bootstrap-sass/assets/stylesheets/bootstrap/normalize";
+@import "wet-boew/src/base/bootstrap-overrides/normalize";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/print";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
+
+/*! Core - HTML */
+@import "gcweb/sites/baseline/glyphicons";
+@import "gcweb/sites/fonts/base";
+@import "gcweb/sites/baseline/font";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/type";
+@import "wet-boew/src/base/bootstrap-overrides/core-heading";
+@import "gcweb/common/list/lists";
+@import "wet-boew/src/base/bootstrap-overrides/core";
+@import "wet-boew/src/base/details/base";
+@import "gcweb/sites/baseline/scaffolding";
+@import "gcweb/sites/baseline/details";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/code";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/grid";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/tables";
+@import "wet-boew/src/base/bootstrap-overrides/core-tables";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/forms";
+@import "wet-boew/src/base/bootstrap-overrides/core-forms";
+@import "wet-boew/src/base/forms/base";
+@import "gcweb/common/form/forms";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+@import "wet-boew/src/base/bootstrap-overrides/core-button";
+@import "gcweb/sites/baseline/buttons";
+@import "gcweb/common/scaffolding/base";
+
+@import "gcweb/sites/baseline/obselete";
+
+/*
+ Polyfills
+ */
+@import "wet-boew/src//polyfills/datalist/base";
+@import "wet-boew/src/polyfills/details/base";
+@import "wet-boew/src//polyfills/datepicker/base";
+
+
+/*! Base Site */
+@import "wet-boew/src/base/accessibility/sites";
+@import "wet-boew/src/base/breadcrumb/base";
+@import "gcweb/sites/breadcrumbs/breadcrumb";
+@import "wet-boew/src/base/language-selector/base";
+@import "wet-boew/src/base/sign-in-off/base";
+@import "gcweb/sites/archived/archived";
+@import "gcweb/sites/banner/base";
+@import "gcweb/sites/footers/base";
+@import "gcweb/sites/language/language-bar";
+@import "gcweb/sites/search/base";
+@import "gcweb/sites/secondary-menu/base";
+@import "gcweb/sites/page-details/base";
+@import "gcweb/sites/date-modified/base";
+@import "gcweb/sites/feedback/base";
+@import "gcweb/sites/gcweb-menu/base";
+@import "gcweb/sites/authentication/base";
+@import "gcweb/sites/header/base";
+@import "gcweb/sites/main-page-title/base";
+@import "gcweb/sites/contributors/base";
+
+/*! GCDS Components complementary style */
+@import "gcweb/components/gcds-card/workaround";
+
+/*! Components (CSS type only) */
+@import "bootstrap-sass/assets/stylesheets/bootstrap/component-animations";
+@import "wet-boew/src/base/transitions/base";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/dropdowns";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/button-groups";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/input-groups";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/navs";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/navbar";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/breadcrumbs";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/pagination";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/pager";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/labels";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/alerts";
+@import "wet-boew/src/base/bootstrap-overrides/placeholders-alerts-labels";
+@import "wet-boew/src/base/bootstrap-overrides/alerts";
+@import "wet-boew/src/base/bootstrap-overrides/labels";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/badges";
+@import "gcweb/components/baseline/badges";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/jumbotron";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/thumbnails";
+@import "gcweb/sites/baseline/thumbnails";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/progress-bars";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/media";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/list-group";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/panels";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/responsive-embed";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/wells";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/close";
+@import "wet-boew/src/base/bootstrap-overrides/components";
+@import "wet-boew/src/base/ellipsis/base";
+
+// Provisional wet-boew components
+@import "wet-boew/src/base/provisional";
+
+
+// Components w/ JavaScript
+@import "bootstrap-sass/assets/stylesheets/bootstrap/modals";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/tooltip";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/popovers";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/carousel";
+
+/*
+ Plugins
+ */
+@import "wet-boew/src/plugins/cal-events/base";
+@import "wet-boew/src/plugins/calendar/base";
+@import "wet-boew/src/plugins/charts/base";
+@import "wet-boew/src/plugins/collapsible-alerts/base";
+@import "wet-boew/src/plugins/dismissable-content/base";
+@import "wet-boew/src/plugins/eqht-css/base";
+@import "wet-boew/src/plugins/equalheight/base";
+@import "gcweb/components/equalheight/base";
+@import "wet-boew/src/plugins/filter/base";
+@import "wet-boew/src/plugins/footnotes/base";
+@import "wet-boew/src/plugins/formvalid/base";
+@import "wet-boew/src/plugins/lightbox/base";
+@import "wet-boew/src/plugins/menu/base";
+@import "wet-boew/src/plugins/multimedia/base";
+@import "gcweb/components/baseline/wb-mltmd";
+@import "gcweb/wet-boew/formvalid/base";
+@import "wet-boew/src/plugins/overlay/base";
+@import "gcweb/components/baseline/overlay";
+@import "wet-boew/src/plugins/prettify/base";
+@import "wet-boew/src/plugins/resize/base";
+@import "wet-boew/src/plugins/share/base";
+@import "wet-boew/src/plugins/stepsform/base";
+@import "wet-boew/src/plugins/tables/base";
+@import "gcweb/components/baseline/wb-tables";
+@import "wet-boew/src/plugins/tabs/base";
+@import "gcweb/components/tabs/carousel";
+@import "wet-boew/src/plugins/tagfilter/base";
+@import "wet-boew/src/plugins/twitter/base";
+@import "wet-boew/src/plugins/texthighlight/base";
+@import "wet-boew/src/plugins/geomap/base";
+@import "wet-boew/src/plugins/zebra/base";
+@import "wet-boew/src/plugins/feeds/base";
+@import "wet-boew/src/plugins/paginate/base";
+@import "gcweb/wet-boew/feeds/base"; // CSS for feeds plugin GC override
+@import "gcweb/wet-boew/geomap/base"; // CSS for geomap plugin GC override
+
+// Components GC Theme
+@import "gcweb/components/baseline/base";
+@import "gcweb/components/base";
+@import "gcweb/components/base2";
+
+@import "gcweb/components/gc-dwnld/base";
+@import "gcweb/components/gc-nws/base";
+@import "gcweb/components/gc-srvinfo/base";
+@import "gcweb/components/redacted/redacted";
+@import "gcweb/components/dshbrd/base";
+@import "gcweb/components/triangle-up";
+@import "gcweb/components/byline/base";
+@import "gcweb/components/gc-follow-us/base";
+@import "gcweb/components/gc-minister/base";
+@import "gcweb/components/gc-most-requested/base";
+@import "gcweb/components/fd-wdgt";
+@import "gcweb/components/pagination/base";
+@import "gcweb/components/toc/base";
+@import "gcweb/components/header-rwd/header-rwd";
+@import "gcweb/components/tbl-floatcolumn/tbl-floatcolumn";
+@import "gcweb/components/wb-fieldflow/base";
+@import "gcweb/components/gc-chckbxrdio/base";
+@import "gcweb/components/gc-features/base";
+@import "gcweb/components/gc-stp-stp/base";
+@import "gcweb/components/conjunctions/base";
+@import "gcweb/components/list-steps/base";
+
+@import "gcweb/components/wb5-click-postback/base";
+
+@import "gcweb/components/wb-chtwzrd/base"; // Provisional CSS for the chat wizard
+@import "gcweb/components/gc-subway/base"; // Provisional CSS for GC subway map menu
+@import "gcweb/components/gc-table/base"; // Provisional CSS for GC table
+@import "gcweb/components/gc-featured-link/base"; // Provisional CSS for GC featured link
+@import "gcweb/components/bold-content/base"; // Provisional CSS that bold every text element in a well component
+
+
+// Template
+@import "gcweb/templates/pagebrand/base";
+@import "gcweb/templates/search/search";
+@import "gcweb/templates/home/base";
+@import "gcweb/templates/blog";
+@import "gcweb/templates/social-media-centre/base";
+@import "gcweb/templates/mobile-centre/base";
+@import "gcweb/templates/campaign/base";
+@import "gcweb/templates/news/base";
+@import "gcweb/templates/application/base";
+@import "gcweb/templates/institutional-landing/base";
+@import "gcweb/templates/theme/base";
+@import "gcweb/templates/servermessage/base";
+
+
+/*! Core - Utilities */
+@import "bootstrap-sass/assets/stylesheets/bootstrap/utilities";
+@import "wet-boew/src/base/accessibility/utilities";
+@import "wet-boew/src/base/proximity/base";
+@import "wet-boew/src/base/bootstrap-4";
+@import "bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
+@import "wet-boew/src/base/component";
+@import "gcweb/common/text-level-modifiers/base";
+@import "gcweb/common/colour/colours";
+@import "gcweb/common/spacing/base";
+
+
+/*
+ Views
+ */
+
+/* All screen views */
+@media screen {
+	@import "wet-boew/src/base/views/screen";
+
+	@import "gcweb/sites/skiplinks/screen";
+
+	@import "gcweb/components/overlay/screen";
+	@import "wet-boew/src/plugins/prettify/screen";
+	@import "wet-boew/src/plugins/tabs/screen";
+	@import "gcweb/components/tabs/screen";
+	@import "gcweb/components/gc-features/screen"; /* Deprecated as v4.0.28 */
+}
+
+/* Extra-small view and under */
+@media screen and (max-width: $screen-xs-max) {
+	@import "wet-boew/src/base/views/screen-xs-max";
+
+	@import "gcweb/sites/banner/screen-xs-max";
+	@import "gcweb/sites/baseline/lists/screen-xs-max";
+	@import "gcweb/common/scaffolding/screen-xs-max";
+	@import "gcweb/sites/gcweb-menu/screen-xs-max";
+	@import "gcweb/sites/page-details/screen-xs-max";
+
+	@import "wet-boew/src/plugins/eqht-css/screen-xs-max";
+	@import "gcweb/components/header-rwd/screen-xs-max";
+	@import "gcweb/components/pagination/screen-xs-max";
+	@import "gcweb/components/toc/screen-xs-max";
+	@import "gcweb/components/list-steps/screen-xs-max";
+
+	@import "gcweb/templates/campaign/screen-xs-max";
+	@import "gcweb/templates/application/screen-xs-max";
+	@import "gcweb/templates/home/screen-xs-max";
+}
+
+/* Small view and under */
+@media screen and (max-width: $screen-sm-max) {
+	@import "wet-boew/src/base/views/screen-sm-max";
+
+	@import "gcweb/sites/banner/screen-sm-max";
+	@import "gcweb/common/scaffolding/screen-sm-max";
+	@import "gcweb/sites/gcweb-menu/screen-sm-max";
+	@import "gcweb/sites/authentication/screen-sm-max";
+	@import "gcweb/sites/footers/screen-sm-max";
+
+	@import "gcweb/components/dshbrd/screen-sm-max";
+	@import "gcweb/components/gc-features/screen-sm-max";
+	@import "gcweb/components/gc-subway/screen-sm-max";
+	@import "wet-boew/src/plugins/tables/screen-sm-max";
+	@import "gcweb/components/gc-table/screen-sm-max"; // Provisional CSS for GC table
+	@import "gcweb/components/gc-chckbxrdio/screen-sm-max";
+	@import "wet-boew/src/plugins/tabs/screen-sm-max";
+
+	@import "gcweb/templates/home/screen-sm-max";
+	@import "gcweb/templates/institutional-landing/screen-sm-max";
+	@import "gcweb/templates/theme/screen-sm-max";
+}
+
+/* Medium view and under */
+@media screen and (max-width: $screen-md-max) {
+	@import "wet-boew/src/base/views/screen-md-max";
+
+	@import "gcweb/sites/gcweb-menu/screen-md-max";
+}
+
+/* Large view and under */
+@media screen and (max-width: $screen-lg-max) {
+	@import "wet-boew/src/base/views/screen-lg-max";
+}
+
+/* Extra-small view and over */
+@media screen and (min-width: $screen-xs-min) {
+	@import "wet-boew/src/base/views/screen-xs-min";
+
+	@import "wet-boew/src/plugins/menu/screen-xs-min";
+	@import "wet-boew/src/plugins/tables/screen-xs-min";
+
+	@import "wet-boew/src/base/proximity/screen-xs-min";
+}
+
+/* Small view and over */
+@media screen and (min-width: $screen-sm-min) {
+	@import "wet-boew/src/base/views/screen-sm-min";
+
+	@import "gcweb/sites/baseline/lists/screen-sm-min";
+
+	@import "wet-boew/src/plugins/filter/screen-sm-min";
+	@import "gcweb/components/header-rwd/screen-sm-min";
+	@import "gcweb/components/gc-chckbxrdio/screen-sm-min";
+	@import "gcweb/components/gc-stp-stp/screen-sm-min";
+
+
+	@import "gcweb/templates/news/screen-sm-min";
+	@import "gcweb/templates/campaign/screen-sm-min";
+
+	@import "wet-boew/src/base/proximity/screen-sm-min";
+	@import "wet-boew/src/base/views/bootstrap-4-screen-sm-min";
+	@import "gcweb/common/spacing/screen-sm-min";
+
+	@import "gcweb/components/conjunctions/screen-sm-min";
+}
+
+/* Medium view and over */
+@media screen and (min-width: $screen-md-min) {
+	@import "wet-boew/src/base/views/screen-md-min";
+
+	@import "gcweb/sites/baseline/lists/screen-md-min";
+	@import "gcweb/sites/gcweb-menu/screen-md-min";
+	@import "gcweb/sites/feedback/screen-md-min";
+	@import "gcweb/sites/contributors/screen-md-min";
+
+	@import "wet-boew/src/plugins/feeds/screen-md-min";
+	@import "wet-boew/src/plugins/tabs/screen-md-min";
+	@import "gcweb/components/gc-subway/screen-md-min";
+	@import "gcweb/components/gc-most-requested/screen-md-min";
+
+	@import "gcweb/templates/theme/screen-md-min";
+
+	@import "wet-boew/src/base/proximity/screen-md-min";
+	@import "gcweb/common/spacing/screen-md-min";
+
+	@import "gcweb/components/conjunctions/screen-md-min";
+}
+
+/* Large view and over */
+@media screen and (min-width: $screen-lg-min) {
+	@import "wet-boew/src/base/views/screen-lg-min";
+
+	@import "gcweb/sites/baseline/lists/screen-lg-min";
+
+	@import "wet-boew/src/plugins/filter/screen-lg-min";
+	@import "gcweb/components/header-rwd/screen-lg-min";
+	@import "gcweb/components/equalheight/screen-lg-min";
+
+	@import "gcweb/templates/theme/screen-lg-min";
+
+	@import "wet-boew/src/base/proximity/screen-lg-min";
+	@import "gcweb/common/spacing/screen-lg-min";
+
+	@import "gcweb/components/conjunctions/screen-lg-min";
+}
+
+/* Extra-extra-small view */
+@media screen and (max-width: $screen-xxs-max) {
+	@import "wet-boew/src/base/views/screen-xxs-max";
+
+	@import "gcweb/sites/banner/screen-xxs-max";
+	@import "gcweb/sites/footers/screen-xxs-max";
+	@import "gcweb/sites/gcweb-menu/screen-xxs-max";
+	@import "gcweb/sites/search/screen-xxs-max";
+
+	@import "gcweb/components/screen-xxs-max";
+	@import "wet-boew/src/plugins/menu/screen-xxs-max";
+	@import "wet-boew/src/plugins/tables/screen-xxs-max";
+	@import "wet-boew/src/plugins/tabs/screen-xxs-max";
+	@import "gcweb/components/tabs/screen-xxs-max";
+}
+
+/* Extra-small view */
+@media screen and (min-width: $screen-xs-min) and (max-width: $screen-xs-max) {
+	@import "wet-boew/src/base/views/screen-xs-min-to-screen-xs-max";
+
+	@import "gcweb/sites/search/screen-xs-min-to-screen-xs-max";
+}
+
+/* Small view */
+@media screen and (min-width: $screen-sm-min) and (max-width: $screen-sm-max) {
+	@import "wet-boew/src/base/views/screen-sm-min-to-screen-sm-max";
+
+	@import "gcweb/sites/search/screen-sm-min-to-screen-sm-max";
+	@import "gcweb/sites/feedback/screen-sm-min-to-screen-sm-max";
+
+	@import "gcweb/templates/campaign/screen-sm-min-to-screen-sm-max";
+}
+
+/* Medium view */
+@media screen and (min-width: $screen-md-min) and (max-width: $screen-md-max) {
+	@import "wet-boew/src/base/views/screen-md-min-to-screen-md-max";
+
+	@import "gcweb/sites/gcweb-menu/screen-md-min-to-screen-md-max";
+
+	@import "gcweb/components/equalheight/screen-md-min-to-screen-md-max";
+
+	@import "gcweb/templates/home/screen-md-min-to-screen-md-max";
+}
+
+/* Large view */
+@media screen and (min-width: $screen-lg-min) and (max-width: $screen-lg-max) {
+	@import "wet-boew/src/base/views/screen-lg-min-to-screen-lg-max";
+}
+
+/* Extra-large view */
+@media screen and (min-width: $screen-xl-min) {
+	@import "wet-boew/src/base/views/screen-xl-min";
+
+	@import "wet-boew/src/base/proximity/screen-xl-min";
+}
+
+/* Print view */
+@media print {
+	@import "wet-boew/src/base/views/print";
+
+	@import "gcweb/sites/header/print";
+	@import "wet-boew/src/base/breadcrumb/print";
+	@import "gcweb/sites/footers/print";
+	@import "gcweb/sites/gcweb-menu/print";
+	@import "gcweb/sites/language/print";
+	@import "gcweb/sites/search/print";
+	@import "gcweb/sites/secondary-menu/print";
+	@import "gcweb/sites/page-details/print";
+	@import "gcweb/sites/feedback/print";
+
+	@import "wet-boew/src/plugins/footnotes/print";
+	@import "wet-boew/src/plugins/geomap/print";
+	@import "wet-boew/src/plugins/lightbox/print";
+	@import "wet-boew/src/plugins/multimedia/print";
+	@import "wet-boew/src/plugins/overlay/print";
+	@import "wet-boew/src/plugins/prettify/print";
+	@import "wet-boew/src/plugins/tabs/print";
+	@import "gcweb/components/gc-features/print"; /* Deprecated as v4.0.28 */
+	@import "gcweb/components/gc-follow-us/print";
+	@import "gcweb/components/list-steps/print";
+
+	@import "gcweb/templates/pagebrand/print";
+	@import "gcweb/templates/campaign/print";
+	@import "gcweb/templates/application/print";
+}
+
+/* Testing WCAG Spacing */
+@import "wet-boew/src/base/test-wcag";
